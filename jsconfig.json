@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "baseUrl": "./src"
+  },
+  "include": ["**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules", "deployManager.js"]
+}

@@ -1,0 +1,24 @@
+{
+  "react-function-component-skeleton": {
+    "scope": "javascriptreact",
+    "prefix": "rfc",
+    "body": [
+      "import { Root } from './styled';",
+      "",
+      "export const ${TM_FILENAME_BASE}$1 = () => {",
+      "  return <Root>${TM_FILENAME_BASE}$1</Root>;",
+      "};",
+      ""
+    ]
+  },
+  "react-styled-components-skeleton": {
+    "scope": "javascript",
+    "prefix": "rsc",
+    "body": ["import styled from 'styled-components'", "", "export const Root = styled.div``"]
+  },
+  "react-export-const-skeleton": {
+    "scope": "javascript, javascriptreact",
+    "prefix": "ec",
+    "body": ["export const "]
+  }
+}
