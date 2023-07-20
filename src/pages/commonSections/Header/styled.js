@@ -6,10 +6,6 @@ export const Root = styled.div`
   left: 0;
   top: 0;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
   height: ${HEADER_HEIGHT}px;
   background-color: white;
   z-index: 5;
@@ -18,6 +14,7 @@ export const Root = styled.div`
 `;
 
 export const HeaderContentWrapper = styled.div`
+  margin: 0 auto;
   max-width: ${HEADER_MAX_WIDTH}px;
   min-width: ${HEADER_MIN_WIDTH}px;
   height: 100%;
