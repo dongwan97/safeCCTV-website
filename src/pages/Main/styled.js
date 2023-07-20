@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import bannerImg from 'assets/images/banner.jpeg';
+import bannerImg from 'assets/images/banner.jpg';
+
 export const Root = styled.div`
   width: 100%;
   height: 100%;
@@ -12,9 +13,7 @@ export const Root = styled.div`
 `;
 
 export const Banner = styled.div`
-  background-image: url(${bannerImg});
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url(${bannerImg}) no-repeat center;
   background-size: cover;
   width: 100vw;
   height: 600px;
@@ -23,10 +22,16 @@ export const Banner = styled.div`
   overflow: hidden;
 `;
 
-export const BannerTypo = styled.p`
+export const BannerTypoWrapper = styled.div`
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: 100px;
+  left: 100px;
+  background-color: #75c2f6;
+  opacity: 0.9;
+  border-radius: 20px;
+  padding: 20px;
+`;
+export const BannerTypo = styled.p`
   color: white;
   font-weight: 700;
   font-size: 32px;
