@@ -6,8 +6,8 @@ export const Header = () => {
       <HeaderContentWrapper>
         <Logo alt="logo_img" src={logoImg} />
         <NavigateWrapper>
-          <NavigateTypo>nav1</NavigateTypo>
-          <NavigateTypo>nav2</NavigateTypo>
+          <NavigateTypo>Landing</NavigateTypo>
+          <NavigateTypo>About Us</NavigateTypo>
         </NavigateWrapper>
       </HeaderContentWrapper>
     </Root>

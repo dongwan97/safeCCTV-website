@@ -19,7 +19,6 @@ export const HeaderContentWrapper = styled.div`
   min-width: ${HEADER_MIN_WIDTH}px;
   height: 100%;
   line-height: 100%;
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -32,14 +31,15 @@ export const Logo = styled.img`
 
 export const NavigateWrapper = styled.div`
   height: ${HEADER_HEIGHT}px;
-  border: 1px solid red;
 `;
 export const NavigateTypo = styled.span`
+  font-size: 13px;
+  font-weight: 900;
   line-height: ${HEADER_HEIGHT}px;
   vertical-align: middle;
   cursor: pointer;
   &:hover {
     text-decoration: underline;
   }
-  margin-right: 5px;
+  margin-right: 12px;
 `;
