@@ -29,8 +29,8 @@ export const HeaderContentWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
+  margin-top: 5px;
   width: 200px;
-  height: 20px;
 `;
 
 export const NavigateWrapper = styled.div`
