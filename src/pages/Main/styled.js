@@ -8,7 +8,6 @@ export const Root = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid red;
   overflow: hidden;
 `;
 
@@ -18,7 +17,6 @@ export const Banner = styled.div`
   width: 100vw;
   height: 600px;
   position: relative;
-  border: 1px solid blue;
   overflow: hidden;
 `;
 

@@ -37,6 +37,7 @@ export const NavigateWrapper = styled.div`
   height: ${HEADER_HEIGHT}px;
   border: 1px solid red;
 `;
+
 export const NavigateTypo = styled.span`
   line-height: ${HEADER_HEIGHT}px;
   vertical-align: middle;
