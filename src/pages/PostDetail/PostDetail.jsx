@@ -4,6 +4,10 @@ import {
   CommentInput,
   Content,
   Date,
+  DeleteTypo,
+  EditInput,
+  EditTypo,
+  FunctionTypoContainer,
   PostOwnerName,
   Root,
   Title,
@@ -12,38 +16,58 @@ import {
 } from './styled';
 import samplePostDetailData from 'constants/samplePostDetail.json';
 import sampleCommentList from 'constants/sampleComment.json';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Comment } from 'components/Comment';
 
 export const PostDetail = () => {
   const { postId } = useParams();
   const inputRef = useRef();
+  const navigate = useNavigate();
   const [postDetailData, setPostDetailData] = useState(samplePostDetailData.samplePostDetail[+postId]);
   const [currentCommentList, setCurrentCommentList] = useState(sampleCommentList.commentList);
-  const [commentInput, setCommentInput] = useState('');
-  const onChange = ({ target: { value } }) => {
-    setCommentInput(value);
+
+  const [inputValue, setInputValue] = useState({ post: postDetailData.content, comment: '' });
+
+  const [currentContent, setCurrentContent] = useState(postDetailData.content);
+
+  const [isEditing, setIsEditing] = useState(false);
+
+  const onClickDeleteTypo = () => {
+    //delete post api만 있으면 됩니다.
+    navigate(-1); //확인 모달 띄우기
+  };
+  const onClickEditTypo = () => {
+    setIsEditing((prev) => !prev);
+  };
+  const onChange = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       if (!e.shiftKey) {
         e.preventDefault();
-        if (commentInput.length === 0) return;
-        inputRef.current.disabled = true;
-        setTimeout(() => {
-          inputRef.current.disabled = false;
-          inputRef.current.focus();
-        }, 0); //한국어 입력 오류 방지용 코드입니다.
-        setCurrentCommentList((prev) =>
-          prev.concat({
-            commentId: currentCommentList[currentCommentList.length - 1].commentId + 1,
-            content: commentInput,
-            commentOwnerName: '현재 로그인 한 사용자 닉네임',
-            date: '새 댓글 날짜',
-          })
-        );
-        //댓글 저장 api
-        setCommentInput('');
+        if (e.target.name === 'comment') {
+          if (inputValue.comment.length === 0) return;
+          inputRef.current.disabled = true;
+          setTimeout(() => {
+            inputRef.current.disabled = false;
+            inputRef.current.focus();
+          }, 0); //한국어 입력 오류 방지용 코드입니다.
+
+          setCurrentCommentList((prev) =>
+            prev.concat({
+              commentId: currentCommentList[currentCommentList.length - 1].commentId + 1,
+              content: inputValue.comment,
+              commentOwnerName: '현재 로그인 한 사용자 닉네임',
+              date: '새 댓글 날짜',
+            })
+          );
+          setInputValue({ ...inputValue, comment: '' });
+          //댓글 저장 api
+        } else if (e.target.name === 'post') {
+          setCurrentContent(inputValue.post);
+          setIsEditing(false);
+        }
       }
     }
   };
@@ -55,6 +79,7 @@ export const PostDetail = () => {
     () => {},
     [
       //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
+      //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
     ]
   );
 
@@ -62,7 +87,11 @@ export const PostDetail = () => {
     <Root>
       <Title>{postDetailData.title}</Title>
       <PostOwnerName>{postDetailData.postOwnerName}</PostOwnerName>
-      <Content>{postDetailData.content}</Content>
+      {isEditing ? (
+        <EditInput name="post" onChange={onChange} onKeyDown={onKeyDown} value={inputValue.post} />
+      ) : (
+        <Content>{currentContent}</Content>
+      )}
       <Date>{postDetailData.date}</Date>
       <ViewCount>{postDetailData.ViewCount}</ViewCount>
       <UserNickname>로그인한 사용자의 닉네임</UserNickname>
@@ -71,7 +100,17 @@ export const PostDetail = () => {
           <Comment {...comment} key={comment.commentId} deleteComment={deleteComment} />
         ))}
       </CommentContainer>
-      <CommentInput value={commentInput} onChange={onChange} onKeyDown={onKeyDown} ref={inputRef} />
+      <CommentInput
+        name="comment"
+        value={inputValue.comment}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        ref={inputRef}
+      />
+      <FunctionTypoContainer>
+        <EditTypo onClick={onClickEditTypo}>수정</EditTypo>
+        <DeleteTypo onClick={onClickDeleteTypo}>삭제</DeleteTypo>
+      </FunctionTypoContainer>
     </Root>
   );
 };
