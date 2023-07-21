@@ -1,9 +1,6 @@
-import './Landing.css';
 import car1 from 'assets/images/car.jpg';
-import car2 from 'assets/images/car2.jpg';
 import crossboard1 from 'assets/images/crossboard1.jpg';
-import crossboard2 from 'assets/images/crossboard2.jpg';
-import meeting5 from 'assets/images/meeting5.jpg';
+
 import {
   Crossboard1,
   Root,

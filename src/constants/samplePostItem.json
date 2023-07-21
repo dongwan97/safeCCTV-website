@@ -1,0 +1,28 @@
+{
+  "sampleList": [
+    {
+      "postId": 0,
+      "title": "제목",
+      "viewCount": 5,
+      "date": "2023-07-21"
+    },
+    {
+      "postId": 1,
+      "title": "제목",
+      "viewCount": 10,
+      "date": "2023-07-22"
+    },
+    {
+      "postId": 2,
+      "title": "제목",
+      "viewCount": 1,
+      "date": "2023-07-25"
+    },
+    {
+      "postId": 3,
+      "title": "제목",
+      "viewCount": 3,
+      "date": "2023-07-30"
+    }
+  ]
+}
