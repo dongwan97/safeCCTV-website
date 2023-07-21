@@ -5,7 +5,9 @@ export const PostOwnerName = styled.p``;
 export const Title = styled.p`
   font-weight: 800;
 `;
-export const Content = styled.div``;
+export const Content = styled.div`
+  white-space: pre-line;
+`;
 export const Date = styled.p``;
 export const ViewCount = styled.p``;
 export const UserNickname = styled.p``;

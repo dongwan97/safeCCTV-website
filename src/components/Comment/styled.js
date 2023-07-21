@@ -11,6 +11,7 @@ export const CommentOwnerName = styled.p`
 `;
 export const Content = styled.p`
   font-size: 20px;
+  white-space: pre-line;
 `;
 export const Date = styled.p``;
 export const FunctionTypo = styled.p`
@@ -29,3 +30,7 @@ export const FunctionTypoContainer = styled.div`
 `;
 export const EditTypo = styled(FunctionTypo)``;
 export const DeleteTypo = styled(FunctionTypo)``;
+export const EditInput = styled.textarea`
+  width: 100%;
+  font-size: 20px;
+`;
