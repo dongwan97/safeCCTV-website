@@ -1,0 +1,28 @@
+{
+  "commentList": [
+    {
+      "commentId": 0,
+      "content": "내용물 줄바꿈 테스트 필요",
+      "commentOwnerName": "댓글주인닉네임",
+      "date": "댓글 날짜"
+    },
+    {
+      "commentId": 1,
+      "content": "내용물 줄바꿈 테스트 필요",
+      "commentOwnerName": "댓글주인닉네임",
+      "date": "댓글 날짜"
+    },
+    {
+      "commentId": 2,
+      "content": "내용물 줄바꿈 테스트 필요",
+      "commentOwnerName": "댓글주인닉네임",
+      "date": "댓글 날짜"
+    },
+    {
+      "commentId": 3,
+      "content": "내용물 줄바꿈 테스트 필요",
+      "commentOwnerName": "댓글주인닉네임",
+      "date": "댓글 날짜"
+    }
+  ]
+}
