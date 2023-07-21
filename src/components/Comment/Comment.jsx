@@ -19,7 +19,7 @@ export const Comment = ({ commentId, commentOwnerName, content, date, deleteComm
     setIsEditing((prev) => !prev);
   };
   const onClickDeleteTypo = () => {
-    deleteComment();
+    deleteComment(commentId);
   };
   const onChange = ({ target: { value } }) => {
     setInputValue(value);

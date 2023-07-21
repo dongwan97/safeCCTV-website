@@ -48,7 +48,7 @@ export const PostDetail = () => {
     }
   };
   const deleteComment = (id) => {
-    setCurrentCommentList((prev) => prev.filter((comment, index) => comment.commentId !== id));
+    setCurrentCommentList((prev) => prev.filter((comment) => comment.commentId !== id));
     //deleteComment api
   };
   useEffect(
