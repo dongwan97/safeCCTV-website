@@ -32,6 +32,7 @@ export const Logo = styled.img`
 export const NavigateWrapper = styled.div`
   height: ${HEADER_HEIGHT}px;
 `;
+
 export const NavigateTypo = styled.span`
   font-size: 13px;
   font-weight: 900;
