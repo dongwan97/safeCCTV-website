@@ -1,0 +1,36 @@
+{
+  "samplePostDetail": [
+    {
+      "postId": 0,
+      "postOwnerName": "이성훈",
+      "title": "제목입니다",
+      "content": "내용입니다 줄바꿈 테스트 필요",
+      "date": "2023-07-21",
+      "viewCount": 5
+    },
+    {
+      "postId": 1,
+      "postOwnerName": "안재형",
+      "title": "제목입니다",
+      "content": "내용입니다 줄바꿈 테스트 필요",
+      "date": "2023-07-22",
+      "viewCount": 10
+    },
+    {
+      "postId": 2,
+      "postOwnerName": "이윤서",
+      "title": "제목입니다",
+      "content": "내용입니다 줄바꿈 테스트 필요",
+      "date": "2023-07-25",
+      "viewCount": 1
+    },
+    {
+      "postId": 3,
+      "postOwnerName": "김동완",
+      "title": "제목입니다",
+      "content": "내용입니다 줄바꿈 테스트 필요",
+      "date": "2023-07-30",
+      "viewCount": 3
+    }
+  ]
+}
