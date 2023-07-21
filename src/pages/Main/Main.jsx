@@ -15,7 +15,7 @@ export const Main = () => {
       <PostItemContainer>
         <PostTitle>정보공유게시판</PostTitle>
         {sample.sampleList.map((item) => (
-          <PostItem title={item.title} date={item.date} viewCount={item.viewCount} key={item.postId} />
+          <PostItem key={item.postId} {...item} />
         ))}
       </PostItemContainer>
     </Root>

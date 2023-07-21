@@ -15,3 +15,5 @@ export const PostTitle = styled.p`
   font-weight: 700;
   font-size: 28px;
 `;
+
+export const Nickname = styled.p``;
