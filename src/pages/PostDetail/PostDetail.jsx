@@ -47,6 +47,10 @@ export const PostDetail = () => {
       }
     }
   };
+  const deleteComment = (id) => {
+    setCurrentCommentList((prev) => prev.filter((comment, index) => comment.commentId !== id));
+    //deleteComment api
+  };
   useEffect(
     () => {},
     [
@@ -64,7 +68,7 @@ export const PostDetail = () => {
       <UserNickname>로그인한 사용자의 닉네임</UserNickname>
       <CommentContainer>
         {currentCommentList.map((comment) => (
-          <Comment {...comment} key={comment.commentId} />
+          <Comment {...comment} key={comment.commentId} deleteComment={deleteComment} />
         ))}
       </CommentContainer>
       <CommentInput value={commentInput} onChange={onChange} onKeyDown={onKeyDown} ref={inputRef} />
