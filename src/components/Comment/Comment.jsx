@@ -1,4 +1,4 @@
-import { CommentOwnerName, Content, Date, Root } from './styled';
+import { CommentOwnerName, Content, Date, DeleteTypo, EditTypo, FunctionTypoContainer, Root } from './styled';
 
 export const Comment = ({ commentId, commentOwnerName, content, date }) => {
   return (
@@ -8,6 +8,10 @@ export const Comment = ({ commentId, commentOwnerName, content, date }) => {
       </CommentOwnerName>
       <Content>{content}</Content>
       <Date>{date}</Date>
+      <FunctionTypoContainer>
+        <EditTypo>수정</EditTypo>
+        <DeleteTypo>삭제</DeleteTypo>
+      </FunctionTypoContainer>
     </Root>
   );
 };
