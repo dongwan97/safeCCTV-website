@@ -1,4 +1,3 @@
-import './Landing.css';
 import car1 from 'assets/images/car.jpg';
 import crossboard1 from 'assets/images/crossboard1.jpg';
 import {
