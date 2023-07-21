@@ -33,6 +33,15 @@ export const TopTypoContainer = styled.div`
   height: 100vh;
 `;
 
+export const TopTypoMain = styled.p`
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
+`;
+export const TopTypoText = styled.p`
+  color: white;
+`;
+
 export const SecondContainer = styled.div`
   display: flex;
   background-color: white;
@@ -66,7 +75,7 @@ export const ThirdContainer = styled.div`
   position: relative;
   background-color: #f9fafd;
   color: aliceblue;
-  padding: 50px 200px;
+  padding: 200px 300px;
 `;
 
 export const ThirdTypoContainer = styled.div`
@@ -81,10 +90,65 @@ export const ThirdTypoTop = styled.p`
   font-size: 27px;
   font-weight: bold;
   color: orange;
+  margin-bottom: 13px;
 `;
 
 export const ThirdTypoText = styled.p`
-  font-size: 15px;
+  font-size: 23px;
   text-align: center;
   color: black;
+  font-weight: bold;
+`;
+
+export const ServicesContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  padding: 0px;
+`;
+export const ServicesRow = styled.div`
+  display: flex;
+  gap: 200px;
+  padding-top: 50px;
+`;
+
+export const Service = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 370px;
+`;
+export const ServiceImg = styled.img`
+  width: 50%;
+`;
+export const ServiceImgCar = styled.img`
+  width: 30%;
+`;
+export const ServiceTypo = styled.p`
+  color: black;
+  font-size: 20px;
+  color: rgb(107, 118, 132);
+`;
+export const ServiceTypoTop = styled.p`
+  color: black;
+  font-size: 23px;
+  font-weight: bold;
+`;
+
+export const ContactContainer = styled.div`
+  background-color: dimgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+`;
+
+export const ContactTitle = styled.p`
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
 `;
