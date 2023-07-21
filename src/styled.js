@@ -6,7 +6,7 @@ export const Root = styled.div`
   position: relative;
   margin: 0 auto;
   margin-top: ${HEADER_HEIGHT}px;
-  border: 5px solid black;
+  /* border: 5px solid black; */
   max-width: ${BODY_MAX_WIDTH}px;
   min-width: ${BODY_MIN_WIDTH}px;
   display: flex;
