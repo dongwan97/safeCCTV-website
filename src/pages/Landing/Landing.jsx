@@ -1,6 +1,5 @@
 import car1 from 'assets/images/car.jpg';
 import crossboard1 from 'assets/images/crossboard1.jpg';
-
 import {
   Crossboard1,
   Root,
@@ -28,20 +27,18 @@ export const Landing = () => {
           <div>need a lift? we can help</div>
         </TopTypoContainer>
 
-        <div>
-          <SecondContainer>
-            <Crossboard1 src={crossboard1} />
-            <SecondTypoContainer>
-              <SecondTypoFirst>아이들을 위한 안전한 환경을 고민합니다</SecondTypoFirst>
-              <SecondTypoSecond>
-                <p>어린이보호구역에서의 안전사고는 갈수록 늘어가고 있습니다.</p>
-                <p>아이들의 안전은 저희 사회가 고려해야할 가장 우선적인 문제입니다</p>
-                <p>아이들은 사회의 미래이자 희망입니다</p>
-                <p>그렇기에 저희는 사회의 미래를 생각합니다.</p>
-              </SecondTypoSecond>
-            </SecondTypoContainer>
-          </SecondContainer>
-        </div>
+        <SecondContainer>
+          <Crossboard1 src={crossboard1} />
+          <SecondTypoContainer>
+            <SecondTypoFirst>아이들을 위한 안전한 환경을 고민합니다</SecondTypoFirst>
+            <SecondTypoSecond>
+              <p>어린이보호구역에서의 안전사고는 갈수록 늘어가고 있습니다.</p>
+              <p>아이들의 안전은 저희 사회가 고려해야할 가장 우선적인 문제입니다</p>
+              <p>아이들은 사회의 미래이자 희망입니다</p>
+              <p>그렇기에 저희는 사회의 미래를 생각합니다.</p>
+            </SecondTypoSecond>
+          </SecondTypoContainer>
+        </SecondContainer>
 
         {/* <img src={meeting5} className="meeting5"></img> */}
         <ThirdContainer>
