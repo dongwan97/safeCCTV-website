@@ -12,6 +12,4 @@ export const UserNickname = styled.p``;
 
 export const CommentContainer = styled.div``;
 
-export const CommentInput = styled.textarea`
-  resize: none;
-`;
+export const CommentInput = styled.textarea``;
