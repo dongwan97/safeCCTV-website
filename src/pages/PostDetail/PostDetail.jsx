@@ -93,7 +93,7 @@ export const PostDetail = () => {
         <Content>{currentContent}</Content>
       )}
       <Date>{postDetailData.date}</Date>
-      <ViewCount>{postDetailData.ViewCount}</ViewCount>
+      <ViewCount>조회수 : {postDetailData.viewCount}</ViewCount>
       <UserNickname>로그인한 사용자의 닉네임</UserNickname>
       <CommentContainer>
         {currentCommentList.map((comment) => (
