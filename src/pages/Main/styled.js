@@ -29,8 +29,13 @@ export const BannerTypoWrapper = styled.div`
   border-radius: 20px;
   padding: 20px;
 `;
+
 export const BannerTypo = styled.p`
   color: white;
   font-weight: 700;
   font-size: 32px;
+`;
+
+export const PostItemContainer = styled.div`
+  border: 2px solid black;
 `;
