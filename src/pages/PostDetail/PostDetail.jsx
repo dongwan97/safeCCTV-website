@@ -14,7 +14,7 @@ import samplePostDetailData from 'constants/samplePostDetail.json';
 import { useParams } from 'react-router-dom';
 
 export const PostDetail = () => {
-  const postId = useParams();
+  const { postId } = useParams();
   const [postDetailData, setPostDetailData] = useState(samplePostDetailData.samplePostDetail[+postId]);
   const [currentCommentList, setCurrentCommentList] = useState([]);
 
@@ -24,6 +24,7 @@ export const PostDetail = () => {
       //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
     ]
   );
+
   return (
     <Root>
       <Title>{postDetailData.title}</Title>
