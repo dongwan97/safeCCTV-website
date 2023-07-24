@@ -101,6 +101,7 @@ export const PostDetail = () => {
         ))}
       </CommentContainer>
       <CommentInput
+        placeholder="댓글을 입력하세요"
         name="comment"
         value={inputValue.comment}
         onChange={onChange}

@@ -12,9 +12,17 @@ export const Date = styled.p``;
 export const ViewCount = styled.p``;
 export const UserNickname = styled.p``;
 
-export const CommentContainer = styled.div``;
+export const CommentContainer = styled.div`
+  border: 1px solid black;
+  border-bottom: none;
+`;
 
-export const CommentInput = styled.textarea``;
+export const CommentInput = styled.textarea`
+  margin-top: 10px;
+  padding: 8px 5px;
+  background-color: #eeeeee;
+  width: 200px;
+`;
 export const FunctionTypoContainer = styled.div`
   position: absolute;
   top: 5px;
