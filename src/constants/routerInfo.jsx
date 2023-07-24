@@ -1,5 +1,6 @@
 import { Landing } from 'pages/Landing';
 import { Main } from 'pages/Main';
+import { PostCreate } from 'pages/PostCreate';
 import { PostDetail } from 'pages/PostDetail';
 import { Header } from 'pages/commonSections/Header';
 import { Outlet, createBrowserRouter } from 'react-router-dom';
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
       { path: '/', element: <Landing /> },
       { path: '/main', element: <Main /> },
       { path: '/post/:postId', element: <PostDetail /> },
+      { path: '/post/create', element: <PostCreate /> },
     ],
   },
 ]);

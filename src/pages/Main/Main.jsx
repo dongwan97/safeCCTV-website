@@ -1,14 +1,19 @@
 import { KakaoMap } from 'components/KakaoMap';
-import { Banner, BannerTypo, BannerTypoWrapper, PostItemContainer, Root } from './styled';
+import { Banner, BannerTypo, BannerTypoWrapper, CreatePostButton, PostItemContainer, Root } from './styled';
 import sample from 'constants/samplePostItem';
 import { PostItem } from 'components/PostItem';
 import { PostTitle } from 'components/PostItem/styled';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 export const Main = () => {
   const [currentPostList, setCurrentPostList] = useState(sample.sampleList);
+  const navigate = useNavigate();
   useEffect(() => {
     //findAllPost api -> 페이지네이션?
   }, []);
+  const onClickCreatePostButton = () => {
+    navigate('/post/create');
+  };
   return (
     <Root>
       <Banner>
@@ -23,6 +28,7 @@ export const Main = () => {
           <PostItem key={item.postId} {...item} />
         ))}
       </PostItemContainer>
+      <CreatePostButton onClick={onClickCreatePostButton}>게시물 등록</CreatePostButton>
     </Root>
   );
 };

@@ -9,6 +9,7 @@ export const Root = styled.div`
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
+  padding-bottom: 100px;
 `;
 
 export const Banner = styled.div`
@@ -38,4 +39,13 @@ export const BannerTypo = styled.p`
 
 export const PostItemContainer = styled.div`
   border: 2px solid black;
+`;
+
+export const CreatePostButton = styled.button`
+  margin-top: 20px;
+  background-color: yellowgreen;
+  border-radius: 20px;
+  color: white;
+  width: 100px;
+  height: 30px;
 `;
