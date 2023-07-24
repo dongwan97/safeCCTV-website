@@ -2,15 +2,16 @@ import { HEADER_HEIGHT, HEADER_MAX_WIDTH, HEADER_MIN_WIDTH } from 'constants/lay
 import styled from 'styled-components';
 
 export const Root = styled.div`
+  box-sizing: border-box;
+  padding: 0 30px;
   position: fixed;
   left: 0;
   top: 0;
-
   height: ${HEADER_HEIGHT}px;
   background-color: white;
   z-index: 5;
   width: 100%;
-  border-bottom: 2px solid purple;
+  box-shadow: 1px 1px 5px gray;
 `;
 
 export const HeaderContentWrapper = styled.div`
