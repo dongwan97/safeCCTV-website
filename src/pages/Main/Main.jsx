@@ -1,8 +1,8 @@
 import { KakaoMap } from 'components/KakaoMap';
-import { Banner, BannerTypo, BannerTypoWrapper, PostItemContainer, Root } from './styled';
+import { Banner, BannerTypo, BannerTypoWrapper, PostItemContainer, PostTitle, Root } from './styled';
 import sample from 'constants/samplePostItem';
 import { PostItem } from 'components/PostItem';
-import { PostTitle } from 'components/PostItem/styled';
+
 import { useEffect, useState } from 'react';
 export const Main = () => {
   const [currentPostList, setCurrentPostList] = useState(sample.sampleList);
