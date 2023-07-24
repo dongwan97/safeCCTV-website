@@ -3,3 +3,7 @@ export const HEADER_MIN_WIDTH = 500;
 export const HEADER_HEIGHT = 50;
 export const BODY_MAX_WIDTH = 1440;
 export const BODY_MIN_WIDTH = 500;
+export const COMMENT_MAX_WIDTH = 1000;
+export const COMMENT_MIN_WIDTH = 300;
+export const POST_DETAIL_MAX_WIDTH = 1000;
+export const POST_DETAIL_MIN_WIDTH = 300;

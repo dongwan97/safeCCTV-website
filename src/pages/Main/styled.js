@@ -38,7 +38,16 @@ export const BannerTypo = styled.p`
 `;
 
 export const PostItemContainer = styled.div`
+  margin: 0 auto;
   border: 2px solid black;
+  width: 80%;
+`;
+
+export const PostTitle = styled.p`
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  border-bottom: 2px solid black;
 `;
 
 export const CreatePostButton = styled.button`

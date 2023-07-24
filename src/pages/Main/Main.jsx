@@ -2,7 +2,7 @@ import { KakaoMap } from 'components/KakaoMap';
 import { Banner, BannerTypo, BannerTypoWrapper, CreatePostButton, PostItemContainer, Root } from './styled';
 import sample from 'constants/samplePostItem';
 import { PostItem } from 'components/PostItem';
-import { PostTitle } from 'components/PostItem/styled';
+
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 export const Main = () => {
