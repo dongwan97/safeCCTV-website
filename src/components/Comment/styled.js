@@ -1,9 +1,6 @@
-import { COMMENT_MAX_WIDTH, COMMENT_MIN_WIDTH } from 'constants/layout';
 import styled from 'styled-components';
 
 export const Root = styled.div`
-  min-width: ${COMMENT_MIN_WIDTH};
-  max-width: ${COMMENT_MAX_WIDTH};
   position: relative;
   border-bottom: 1px solid black;
   box-sizing: border-box;

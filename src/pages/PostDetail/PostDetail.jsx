@@ -2,15 +2,18 @@ import { useEffect, useRef, useState } from 'react';
 import {
   CommentContainer,
   CommentInput,
+  CommentInputContainer,
   Content,
   Date,
   DeleteTypo,
   EditInput,
   EditTypo,
   FunctionTypoContainer,
+  Line,
   PostOwnerName,
   Root,
   Title,
+  UpperContainer,
   UserNickname,
   ViewCount,
 } from './styled';
@@ -42,6 +45,7 @@ export const PostDetail = () => {
   const onChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
+
   const onKeyDown = (e) => {
     if (e.key === 'Enter') {
       if (!e.shiftKey) {
@@ -85,29 +89,36 @@ export const PostDetail = () => {
 
   return (
     <Root>
-      <Title>{postDetailData.title}</Title>
+      <UpperContainer>
+        <Title>{postDetailData.title}</Title>
+        <Date>{postDetailData.date}</Date>
+      </UpperContainer>
       <PostOwnerName>{postDetailData.postOwnerName}</PostOwnerName>
+      <Line />
       {isEditing ? (
         <EditInput name="post" onChange={onChange} onKeyDown={onKeyDown} value={inputValue.post} />
       ) : (
         <Content>{currentContent}</Content>
       )}
-      <Date>{postDetailData.date}</Date>
+
       <ViewCount>조회수 : {postDetailData.viewCount}</ViewCount>
-      <UserNickname>로그인한 사용자의 닉네임</UserNickname>
+      <Line />
       <CommentContainer>
         {currentCommentList.map((comment) => (
           <Comment {...comment} key={comment.commentId} deleteComment={deleteComment} />
         ))}
       </CommentContainer>
-      <CommentInput
-        placeholder="댓글을 입력하세요"
-        name="comment"
-        value={inputValue.comment}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        ref={inputRef}
-      />
+      <CommentInputContainer>
+        <UserNickname>로그인한 사용자의 닉네임</UserNickname>
+        <CommentInput
+          placeholder="댓글을 입력하세요"
+          name="comment"
+          value={inputValue.comment}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          ref={inputRef}
+        />
+      </CommentInputContainer>
       <FunctionTypoContainer>
         <EditTypo onClick={onClickEditTypo}>수정</EditTypo>
         <DeleteTypo onClick={onClickDeleteTypo}>삭제</DeleteTypo>
