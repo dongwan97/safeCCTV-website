@@ -1,5 +1,5 @@
 import { KakaoMap } from 'components/KakaoMap';
-import { Banner, BannerTypo, BannerTypoWrapper, CreatePostButton, PostItemContainer, Root } from './styled';
+import { Banner, BannerTypo, BannerTypoWrapper, CreatePostButton, PostItemContainer, PostTitle, Root } from './styled';
 import sample from 'constants/samplePostItem';
 import { PostItem } from 'components/PostItem';
 
