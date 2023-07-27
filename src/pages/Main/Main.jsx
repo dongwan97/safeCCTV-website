@@ -5,12 +5,23 @@ import { PostItem } from 'components/PostItem';
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'api/axios';
 export const Main = () => {
   const [currentPostList, setCurrentPostList] = useState(sample.sampleList);
   const navigate = useNavigate();
+  const fetchStudents = async () => {
+    try {
+      const response = await axios.get('student');
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   useEffect(() => {
     //findAllPost api -> 페이지네이션?
+    fetchStudents();
   }, []);
+
   const onClickCreatePostButton = () => {
     navigate('/post/create');
   };
