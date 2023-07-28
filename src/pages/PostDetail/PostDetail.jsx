@@ -32,13 +32,20 @@ export const PostDetail = () => {
   const navigate = useNavigate();
   const [postDetailData, setPostDetailData] = useState(samplePostDetailData.samplePostDetail[+postId]);
   const [currentCommentList, setCurrentCommentList] = useState(sampleCommentList.commentList);
-
   const [inputValue, setInputValue] = useState({ post: postDetailData.content, comment: '' });
-
   const [currentContent, setCurrentContent] = useState(postDetailData.content);
-
   const [isEditing, setIsEditing] = useState(false);
-
+  const onClickCommentRegisterButton = () => {
+    setCurrentCommentList((prev) =>
+      prev.concat({
+        commentId: currentCommentList[currentCommentList.length - 1].commentId + 1,
+        content: inputValue.comment,
+        commentOwnerName: '현재 로그인 한 사용자 닉네임',
+        date: '새 댓글 날짜',
+      })
+    );
+    setInputValue({ ...inputValue, comment: '' });
+  };
   const onClickDeleteTypo = () => {
     //delete post api만 있으면 됩니다.
     navigate(-1); //확인 모달 띄우기
@@ -129,7 +136,9 @@ export const PostDetail = () => {
           ref={inputRef}
         />
         <ButtonWrapper>
-          <StyledButton width={90}>댓글 등록</StyledButton>
+          <StyledButton width={90} onClickStyledButton={onClickCommentRegisterButton}>
+            댓글 등록
+          </StyledButton>
         </ButtonWrapper>
       </CommentInputContainer>
     </Root>
