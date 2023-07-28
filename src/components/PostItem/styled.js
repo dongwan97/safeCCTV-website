@@ -4,7 +4,7 @@ export const Root = styled.div`
   position: relative;
   border-bottom: 1px solid black;
   box-sizing: border-box;
-  padding: 5px;
+  padding: 8px 10px;
 `;
 
 export const TitleTypo = styled.p`
