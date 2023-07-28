@@ -1,4 +1,3 @@
-import { BODY_MAX_WIDTH } from 'constants/layout';
 import styled from 'styled-components';
 
 export const Root = styled.div`
