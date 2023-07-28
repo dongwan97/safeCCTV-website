@@ -10,17 +10,21 @@ import {
   EditTypo,
   FunctionTypoContainer,
   Line,
+  RightContainer,
   PostOwnerName,
   Root,
   Title,
-  UpperContainer,
+  LeftContainer,
   UserNickname,
   ViewCount,
+  UpperContainer,
+  ButtonWrapper,
 } from './styled';
 import samplePostDetailData from 'constants/samplePostDetail.json';
 import sampleCommentList from 'constants/sampleComment.json';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Comment } from 'components/Comment';
+import { StyledButton } from 'components/StyledButton/StyledButton';
 
 export const PostDetail = () => {
   const { postId } = useParams();
@@ -90,19 +94,25 @@ export const PostDetail = () => {
   return (
     <Root>
       <UpperContainer>
-        <Title>{postDetailData.title}</Title>
-        <Date>{postDetailData.date}</Date>
+        <LeftContainer>
+          <Title>{postDetailData.title}</Title>
+          <Date>{postDetailData.date}</Date>
+        </LeftContainer>
+        <RightContainer>
+          <PostOwnerName>{postDetailData.postOwnerName}</PostOwnerName>
+          <FunctionTypoContainer>
+            <EditTypo onClick={onClickEditTypo}>수정</EditTypo>
+            <DeleteTypo onClick={onClickDeleteTypo}>삭제</DeleteTypo>
+          </FunctionTypoContainer>
+        </RightContainer>
       </UpperContainer>
-      <PostOwnerName>{postDetailData.postOwnerName}</PostOwnerName>
       <Line />
       {isEditing ? (
         <EditInput name="post" onChange={onChange} onKeyDown={onKeyDown} value={inputValue.post} />
       ) : (
         <Content>{currentContent}</Content>
       )}
-
       <ViewCount>조회수 : {postDetailData.viewCount}</ViewCount>
-      <Line />
       <CommentContainer>
         {currentCommentList.map((comment) => (
           <Comment {...comment} key={comment.commentId} deleteComment={deleteComment} />
@@ -118,11 +128,10 @@ export const PostDetail = () => {
           onKeyDown={onKeyDown}
           ref={inputRef}
         />
+        <ButtonWrapper>
+          <StyledButton width={90}>댓글 등록</StyledButton>
+        </ButtonWrapper>
       </CommentInputContainer>
-      <FunctionTypoContainer>
-        <EditTypo onClick={onClickEditTypo}>수정</EditTypo>
-        <DeleteTypo onClick={onClickDeleteTypo}>삭제</DeleteTypo>
-      </FunctionTypoContainer>
     </Root>
   );
 };

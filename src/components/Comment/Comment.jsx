@@ -8,6 +8,7 @@ import {
   EditTypo,
   FunctionTypoContainer,
   Root,
+  UpperContainer,
 } from './styled';
 
 export const Comment = ({ commentId, commentOwnerName, content, date, deleteComment }) => {
@@ -43,9 +44,12 @@ export const Comment = ({ commentId, commentOwnerName, content, date, deleteComm
 
   return (
     <Root>
-      <CommentOwnerName>
-        {commentId}. {commentOwnerName}
-      </CommentOwnerName>
+      <UpperContainer>
+        <CommentOwnerName>
+          {commentId}. {commentOwnerName}
+        </CommentOwnerName>
+        <Date>{date}</Date>
+      </UpperContainer>
       <Content>
         {isEditing ? (
           <EditInput value={inputValue} onChange={onChange} onKeyDown={onKeyDown} ref={inputRef} />
@@ -53,7 +57,6 @@ export const Comment = ({ commentId, commentOwnerName, content, date, deleteComm
           currentContent
         )}
       </Content>
-      <Date>{date}</Date>
       <FunctionTypoContainer>
         <EditTypo onClick={onClickEditTypo}>수정</EditTypo>
         <DeleteTypo onClick={onClickDeleteTypo}>삭제</DeleteTypo>
