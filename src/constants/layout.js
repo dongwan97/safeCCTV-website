@@ -7,3 +7,4 @@ export const COMMENT_MAX_WIDTH = 1000;
 export const COMMENT_MIN_WIDTH = 300;
 export const POST_DETAIL_MAX_WIDTH = 1000;
 export const POST_DETAIL_MIN_WIDTH = 300;
+export const STYLED_BUTTON_HEIGHT = 30;

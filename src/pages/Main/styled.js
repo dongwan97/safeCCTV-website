@@ -36,25 +36,3 @@ export const BannerTypo = styled.p`
   font-weight: 700;
   font-size: 32px;
 `;
-
-export const PostItemContainer = styled.div`
-  margin: 0 auto;
-  border: 2px solid black;
-  width: 80%;
-`;
-
-export const PostTitle = styled.p`
-  text-align: center;
-  font-weight: 700;
-  font-size: 28px;
-  border-bottom: 2px solid black;
-`;
-
-export const CreatePostButton = styled.button`
-  margin-top: 20px;
-  background-color: yellowgreen;
-  border-radius: 20px;
-  color: white;
-  width: 100px;
-  height: 30px;
-`;

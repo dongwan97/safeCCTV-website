@@ -1,3 +1,4 @@
+import { Bulletin } from 'pages/Bulletin';
 import { Landing } from 'pages/Landing';
 import { Main } from 'pages/Main';
 import { PostCreate } from 'pages/PostCreate';
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
       { path: '/main', element: <Main /> },
       { path: '/post/:postId', element: <PostDetail /> },
       { path: '/post/create', element: <PostCreate /> },
+      { path: '/post', element: <Bulletin /> },
     ],
   },
 ]);

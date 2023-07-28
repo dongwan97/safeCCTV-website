@@ -2,43 +2,39 @@ import styled from 'styled-components';
 
 export const Root = styled.div`
   box-sizing: border-box;
-  padding-top: 30px;
+  padding: 30px 150px;
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 15px;
 `;
-
+export const TitleTypo = styled.p`
+  font-size: 28px;
+  font-weight: 700;
+`;
 export const TitleInput = styled.input`
-  width: 1000px;
-  height: 30px;
+  max-width: 800px;
+  height: 50px;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #999999;
   box-sizing: border-box;
-  padding: 10px 8px;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333333;
 `;
 
 export const ContentInput = styled.textarea`
-  min-height: 500px;
+  position: relative;
+  min-height: 400px;
   box-sizing: border-box;
-  padding: 10px 8px;
+  padding: 18px 15px;
   border-radius: 10px;
+  border: 1px solid #999999;
+  font-size: 15px;
 `;
 
 export const ButtonContainer = styled.div`
   display: flex;
   column-gap: 5px;
-`;
-export const RegisterButton = styled.button`
-  background-color: skyblue;
-  border-radius: 20px;
-  color: white;
-  width: 50px;
-  height: 30px;
-`;
-
-export const CancelButton = styled.button`
-  border: 1px solid black;
-  border-radius: 20px;
-  width: 50px;
-  height: 30px;
+  align-self: flex-end;
 `;
