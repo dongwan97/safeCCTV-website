@@ -52,6 +52,12 @@ export const CsContainer = styled.div`
   width: 200px;
 `;
 
+export const Bar = styled.div`
+  height: 20px;
+  border-radius: 10px;
+  flex: 1;
+`;
+
 export const CongestionBar = styled(Bar)`
   background-color: #ff5252;
 `;
