@@ -1,5 +1,5 @@
 import { GREEN } from 'constants/color';
-import { REGISTER_BUTTON_HEIGHT } from 'constants/layout';
+import { STYLED_BUTTON_HEIGHT } from 'constants/layout';
 import styled from 'styled-components';
 
 export const Root = styled.button`
@@ -8,7 +8,7 @@ export const Root = styled.button`
   border: 1px solid ${GREEN};
   border-radius: 20px;
   width: 100px;
-  height: ${REGISTER_BUTTON_HEIGHT}px;
+  height: ${STYLED_BUTTON_HEIGHT}px;
   display: flex;
   align-items: center;
   justify-content: center;

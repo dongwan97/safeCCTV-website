@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import bannerImg from 'assets/images/banner.jpg';
+import { STYLED_BUTTON_HEIGHT } from 'constants/layout';
 
 export const Root = styled.div`
   width: 100%;
@@ -38,9 +39,15 @@ export const BannerTypo = styled.p`
 `;
 
 export const PostItemContainer = styled.div`
+  position: relative;
   margin: 0 auto;
   border: 2px solid black;
   width: 80%;
+  & button {
+    position: absolute;
+    right: 0;
+    bottom: -calc(${15 + STYLED_BUTTON_HEIGHT}px);
+  }
 `;
 
 export const PostTitle = styled.p`
@@ -48,13 +55,4 @@ export const PostTitle = styled.p`
   font-weight: 700;
   font-size: 28px;
   border-bottom: 2px solid black;
-`;
-
-export const CreatePostButton = styled.button`
-  margin-top: 20px;
-  background-color: yellowgreen;
-  border-radius: 20px;
-  color: white;
-  width: 100px;
-  height: 30px;
 `;

@@ -1,10 +1,10 @@
 import { KakaoMap } from 'components/KakaoMap';
-import { Banner, BannerTypo, BannerTypoWrapper, CreatePostButton, PostItemContainer, PostTitle, Root } from './styled';
+import { Banner, BannerTypo, BannerTypoWrapper, PostItemContainer, PostTitle, Root } from './styled';
 import sample from 'constants/samplePostItem';
 import { PostItem } from 'components/PostItem';
-
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { RegisterButton } from 'components/StyledButton';
 export const Main = () => {
   const [currentPostList, setCurrentPostList] = useState(sample.sampleList);
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ export const Main = () => {
         {currentPostList.map((item) => (
           <PostItem key={item.postId} {...item} />
         ))}
+        <RegisterButton onClickRegisterButton={onClickCreatePostButton} />
       </PostItemContainer>
-      <CreatePostButton onClick={onClickCreatePostButton}>게시물 등록</CreatePostButton>
     </Root>
   );
 };
