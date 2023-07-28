@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { BulletinImg, Root } from './styled';
 import bulletinImg from 'assets/images/bulletin.png';
 import HoveredBulletinImg from 'assets/images/bulletin_hover.png';
-export const StyledButton = ({ onClickRegisterButton, width, height, children }) => {
+export const StyledButton = ({ onClickStyledButton, width, height, children }) => {
   const style = {
     width: width + 'px',
     height: height + 'px',
@@ -17,12 +17,7 @@ export const StyledButton = ({ onClickRegisterButton, width, height, children })
   };
 
   return (
-    <Root
-      onClick={onClickRegisterButton}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      style={style && style}
-    >
+    <Root onClick={onClickStyledButton} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={style && style}>
       <BulletinImg src={isHovered ? HoveredBulletinImg : bulletinImg} alt="bulletin_img" />
       {children}
     </Root>
