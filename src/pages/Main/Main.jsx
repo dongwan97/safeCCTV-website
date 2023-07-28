@@ -27,7 +27,7 @@ export const Main = () => {
         {currentPostList.map((item) => (
           <PostItem key={item.postId} {...item} />
         ))}
-        <RegisterButton onClickRegisterButton={onClickCreatePostButton} />
+        <RegisterButton onClickRegisterButton={onClickCreatePostButton}>게시물 등록</RegisterButton>
       </PostItemContainer>
     </Root>
   );

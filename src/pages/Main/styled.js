@@ -46,7 +46,7 @@ export const PostItemContainer = styled.div`
   & button {
     position: absolute;
     right: 0;
-    bottom: -calc(${15 + STYLED_BUTTON_HEIGHT}px);
+    bottom: calc(-${STYLED_BUTTON_HEIGHT + 10}px);
   }
 `;
 
