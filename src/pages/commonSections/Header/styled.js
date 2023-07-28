@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Root = styled.div`
   box-sizing: border-box;
-  padding: 0 30px;
+  padding: 0 80px;
   position: fixed;
   left: 0;
   top: 0;
@@ -31,17 +31,22 @@ export const Logo = styled.img`
 `;
 
 export const NavigateWrapper = styled.div`
-  height: ${HEADER_HEIGHT}px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 50px;
+  flex-basis: content;
 `;
 
-export const NavigateTypo = styled.span`
-  font-size: 13px;
+export const NavigateTypo = styled.p`
+  font-size: 15px;
   font-weight: 900;
-  line-height: ${HEADER_HEIGHT}px;
   vertical-align: middle;
   cursor: pointer;
+  padding: 5px;
+  color: #444444;
   &:hover {
     text-decoration: underline;
   }
-  margin-right: 12px;
 `;
