@@ -23,10 +23,10 @@ export const PostCreate = () => {
       <TitleInput placeholder="제목을 입력하세요." name="title" onChange={onChange} />
       <ContentInput placeholder="내용을 입력하세요." name="content" onChange={onChange} />
       <ButtonContainer>
-        <StyledButton onClick={onClickRegisterButton} width={80}>
+        <StyledButton onClickStyledButton={onClickRegisterButton} width={80}>
           등록
         </StyledButton>
-        <StyledButton onClick={onClickCancelButton} width={80}>
+        <StyledButton onClickStyledButton={onClickCancelButton} width={80}>
           취소
         </StyledButton>
       </ButtonContainer>

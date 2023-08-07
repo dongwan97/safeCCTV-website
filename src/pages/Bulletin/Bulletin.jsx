@@ -4,6 +4,7 @@ import { RegisterButton } from 'components/StyledButton';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import sample from 'constants/samplePostItem';
+import { StyledButton } from 'components/StyledButton/StyledButton';
 
 export const Bulletin = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ export const Bulletin = () => {
         {currentPostList.map((item) => (
           <PostItem key={item.postId} {...item} />
         ))}
-        <RegisterButton onClickRegisterButton={onClickCreatePostButton}>게시물 등록</RegisterButton>
+        <StyledButton onClickStyledButton={onClickCreatePostButton}>게시물 등록</StyledButton>
       </PostItemContainer>
     </Root>
   );
