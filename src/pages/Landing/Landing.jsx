@@ -4,6 +4,7 @@ import service1 from 'assets/images/service1.png';
 import service2 from 'assets/images/service2.png';
 import service3 from 'assets/images/service3.png';
 import service4 from 'assets/images/service4.png';
+import { motion } from 'framer-motion';
 
 import {
   Crossboard1,
@@ -30,6 +31,9 @@ import {
   ContactTitle,
   TopTypoText,
   TopTypoMain,
+  motionService,
+  motionServiceContent,
+  serviceImgAnimation,
 } from './styled';
 import { Link } from 'react-router-dom';
 
@@ -67,8 +71,10 @@ export const Landing = () => {
 
           <ServicesContainer>
             <ServicesRow>
-              <Service>
-                <ServiceImg src={service1} />
+              <Service variants={motionService} initial="offScreen" whileInView="onScreen" viewport={{ once: true }}>
+                <Link to="/main" className="Link">
+                  <ServiceImg src={service1} variants={serviceImgAnimation} whileHover="hoverImg" />
+                </Link>
                 <ServiceTypoTop>안전도</ServiceTypoTop>
                 <ServiceTypo>
                   어린이 보호구역의 안전도를
@@ -80,8 +86,10 @@ export const Landing = () => {
                 </Link>
               </Service>
 
-              <Service>
-                <ServiceImgCar src={service2} />
+              <Service variants={motionService} initial="offScreen" whileInView="onScreen" viewport={{ once: true }}>
+                <Link to="/main" className="Link">
+                  <ServiceImgCar src={service2} variants={serviceImgAnimation} whileHover="hoverImg" />
+                </Link>
                 <ServiceTypoTop>안전도</ServiceTypoTop>
                 <ServiceTypo>
                   어린이 보호구역의 안전도를
@@ -95,8 +103,10 @@ export const Landing = () => {
             </ServicesRow>
 
             <ServicesRow>
-              <Service>
-                <ServiceImg src={service3} />
+              <Service variants={motionService} initial="offScreen" whileInView="onScreen" viewport={{ once: true }}>
+                <Link to="/main" className="Link">
+                  <ServiceImg src={service3} variants={serviceImgAnimation} whileHover="hoverImg" />
+                </Link>
                 <ServiceTypoTop>안전도</ServiceTypoTop>
                 <ServiceTypo>
                   어린이 보호구역의 안전도를
@@ -107,8 +117,10 @@ export const Landing = () => {
                   더 알아보기
                 </Link>
               </Service>
-              <Service>
-                <ServiceImg src={service4} />
+              <Service variants={motionService} initial="offScreen" whileInView="onScreen" viewport={{ once: true }}>
+                <Link to="/main" className="Link">
+                  <ServiceImg src={service4} variants={serviceImgAnimation} whileHover="hoverImg" />
+                </Link>
                 <ServiceTypoTop>안전도</ServiceTypoTop>
                 <ServiceTypo>
                   어린이 보호구역의 안전도를
@@ -125,7 +137,7 @@ export const Landing = () => {
       </LandingContainer>
 
       <ContactContainer>
-        <ContactTitle>
+        <ContactTitle variants={motionService} initial="offScreen" whileInView="onScreen" viewport={{ once: true }}>
           한테크에서는
           <br />
           안전을 위한 더욱 다양한 고민을 합니다

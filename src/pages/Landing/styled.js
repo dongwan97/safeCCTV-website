@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 export const Root = styled.div``;
 export const TitleTypo = styled.p`
@@ -112,17 +113,39 @@ export const ServicesRow = styled.div`
   padding-top: 50px;
 `;
 
-export const Service = styled.div`
+export const motionService = {
+  offScreen: { y: 100, opacity: 0 },
+  onScreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      duration: 2,
+    },
+  },
+};
+
+export const serviceImgAnimation = {
+  hoverImg: { scale: 1.1 },
+  transition: {
+    type: 'spring',
+    stiffness: 300,
+    damping: 10,
+  },
+};
+
+export const Service = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 370px;
+  border-radius: 0%;
 `;
-export const ServiceImg = styled.img`
+export const ServiceImg = styled(motion.img)`
   width: 50%;
 `;
-export const ServiceImgCar = styled.img`
-  width: 30%;
+export const ServiceImgCar = styled(motion.img)`
+  width: 31%;
 `;
 export const ServiceTypo = styled.p`
   color: black;
@@ -146,7 +169,7 @@ export const ContactContainer = styled.div`
   height: 100vh;
 `;
 
-export const ContactTitle = styled.p`
+export const ContactTitle = styled(motion.p)`
   color: white;
   font-size: 30px;
   font-weight: bold;
