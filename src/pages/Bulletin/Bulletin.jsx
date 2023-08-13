@@ -1,23 +1,20 @@
 import { PostItem } from 'components/PostItem';
 import { DescriptionTypo, PostItemContainer, PostTitle, Root } from './styled';
-import { RegisterButton } from 'components/StyledButton';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import sample from 'constants/samplePostItem';
 import { StyledButton } from 'components/StyledButton/StyledButton';
 import { findAllPost } from 'api/post/findAllPost';
 
 export const Bulletin = () => {
   const navigate = useNavigate();
-  const [currentPostList, setCurrentPostList] = useState(sample.sampleList);
+  const [currentPostList, setCurrentPostList] = useState([]);
   const onClickCreatePostButton = () => {
     navigate('/post/create');
   };
 
   useEffect(() => {
-    //findAllPost api -> 페이지네이션?
     findAllPost().then((res) => {
-      console.log(res);
+      setCurrentPostList(res);
     });
   }, []);
 
