@@ -25,6 +25,7 @@ import sampleCommentList from 'constants/sampleComment.json';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Comment } from 'components/Comment';
 import { StyledButton } from 'components/StyledButton/StyledButton';
+import { increaseView } from 'api/post/increaseView';
 
 export const PostDetail = () => {
   const { postId } = useParams();
@@ -97,6 +98,11 @@ export const PostDetail = () => {
       //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
     ]
   );
+  useEffect(() => {
+    increaseView({ postId: postId }).then((res) => {
+      console.log(res);
+    }); //request 안맞는듯
+  }, []);
 
   return (
     <Root>
