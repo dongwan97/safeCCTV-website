@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import sample from 'constants/samplePostItem';
 import { StyledButton } from 'components/StyledButton/StyledButton';
+import { findAllPost } from 'api/post/findAllPost';
 
 export const Bulletin = () => {
   const navigate = useNavigate();
@@ -15,6 +16,9 @@ export const Bulletin = () => {
 
   useEffect(() => {
     //findAllPost api -> 페이지네이션?
+    findAllPost().then((res) => {
+      console.log(res);
+    });
   }, []);
 
   return (
