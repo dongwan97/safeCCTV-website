@@ -26,6 +26,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Comment } from 'components/Comment';
 import { StyledButton } from 'components/StyledButton/StyledButton';
 import { increaseView } from 'api/post/increaseView';
+import { checkComment } from 'api/comment/checkComment';
+import { createComment } from 'api/comment/createComment';
+import { findPost } from 'api/post/findPost';
 
 export const PostDetail = () => {
   const { postId } = useParams();
@@ -37,6 +40,12 @@ export const PostDetail = () => {
   const [currentContent, setCurrentContent] = useState(postDetailData.content);
   const [isEditing, setIsEditing] = useState(false);
   const onClickCommentRegisterButton = () => {
+    createComment({
+      nickname: '이성훈',
+      content: '댓글 api 테스트',
+      id: '로그인구현안함',
+      commentId: '',
+    });
     setCurrentCommentList((prev) =>
       prev.concat({
         commentId: currentCommentList[currentCommentList.length - 1].commentId + 1,
@@ -91,17 +100,21 @@ export const PostDetail = () => {
     setCurrentCommentList((prev) => prev.filter((comment) => comment.commentId !== id));
     //deleteComment api
   };
-  useEffect(
-    () => {},
-    [
-      //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
-      //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
-    ]
-  );
+  useEffect(() => {
+    findPost({ postId: postId }).then((res) => {
+      console.log('findPost', res);
+    });
+    //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
+    //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
+  }, []);
   useEffect(() => {
     increaseView({ postId: postId }).then((res) => {
       console.log(res);
-    }); //request 안맞는듯
+    });
+    checkComment({ postId: postId }).then((res) => {
+      console.log(res);
+      setCurrentCommentList(res);
+    });
   }, []);
 
   return (
