@@ -1,3 +1,3 @@
 import { axiosPOST } from 'api/commonAxios/commonAxios';
 
-export const increaseView = () => axiosPOST('/post/increase-views');
+export const increaseView = (req) => axiosPOST('/post/increase-views', req);
