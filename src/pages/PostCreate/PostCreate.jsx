@@ -14,7 +14,7 @@ export const PostCreate = () => {
   const onClickRegisterButton = () => {
     createPost({
       title: inputValue.title,
-      nickname: '닉네임',
+      nickname: '이성훈',
       content: inputValue.content,
       id: process.env.REACT_APP_USER_ID,
     }).then((res) => {
