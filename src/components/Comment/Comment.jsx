@@ -11,7 +11,7 @@ import {
   UpperContainer,
 } from './styled';
 
-export const Comment = ({ commentId, commentOwnerName, content, date, deleteComment }) => {
+export const Comment = ({ commentId, nickname: commentOwnerName, content, date, deleteComment }) => {
   const inputRef = useRef();
   const [currentContent, setCurrentContent] = useState(content);
   const [inputValue, setInputValue] = useState(content);
