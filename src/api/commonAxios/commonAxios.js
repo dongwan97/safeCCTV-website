@@ -15,7 +15,6 @@ axiosInstance.interceptors.response.use((config) => {
   if (newConfig.data) {
     newConfig.data = camelizeKey(newConfig.data);
   }
-
   return newConfig;
 });
 
@@ -29,6 +28,7 @@ axiosInstance.interceptors.request.use((config) => {
     newConfig.data = decamelizeKey(newConfig.data);
   }
 
+  console.log(newConfig.data);
   return newConfig;
 });
 

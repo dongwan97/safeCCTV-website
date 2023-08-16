@@ -15,8 +15,8 @@ export const PostCreate = () => {
     createPost({
       title: inputValue.title,
       nickname: '이성훈',
-      content: inputValue.content,
       id: process.env.REACT_APP_USER_ID,
+      content: inputValue.content,
     }).then((res) => {
       console.log(res);
       navigate('/main');

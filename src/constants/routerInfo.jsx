@@ -1,5 +1,5 @@
 import { checkComment } from 'api/comment/checkComment';
-import { findPost } from 'api/post/findPost';
+import { checkPost } from 'api/post/checkPost';
 import { Bulletin } from 'pages/Bulletin';
 import { Landing } from 'pages/Landing';
 import { Main } from 'pages/Main';
@@ -25,8 +25,8 @@ export const router = createBrowserRouter([
         path: '/post/:postId',
         element: <PostDetail />,
         loader: async ({ params }) => {
-          const postDetailData = await findPost(+params.postId);
-          const commentList = await checkComment({ postId: params.postId });
+          const postDetailData = await checkPost({ postId: +params.postId });
+          const commentList = await checkComment({ postId: +params.postId });
           return {
             postDetailData: postDetailData,
             commentList: commentList,

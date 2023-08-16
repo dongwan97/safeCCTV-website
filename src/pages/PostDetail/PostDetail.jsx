@@ -28,7 +28,7 @@ import { StyledButton } from 'components/StyledButton/StyledButton';
 import { increaseView } from 'api/post/increaseView';
 import { checkComment } from 'api/comment/checkComment';
 import { createComment } from 'api/comment/createComment';
-import { findPost } from 'api/post/findPost';
+import { checkPost } from 'api/post/checkPost';
 import { editPost } from 'api/post/editPost';
 import { deletePost } from 'api/post/deletePost';
 
@@ -48,6 +48,7 @@ export const PostDetail = () => {
       nickname: '이성훈',
       content: inputValue.comment,
       id: process.env.REACT_APP_USER_ID,
+      postId: +postId,
     }).then((res) => {
       if (inputValue.comment.length === 0) return;
       inputRef.current.disabled = true;
@@ -99,21 +100,12 @@ export const PostDetail = () => {
     });
   };
   useEffect(() => {
-    findPost(postId).then((res) => {
-      console.log('findPost', res);
-      setPostDetailData(res);
-      setCurrentContent(res.content);
-    });
     //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
     //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
 
     increaseView({ postId: postId }).then((res) => {
       console.log(res);
       setCurrentViewCount((prev) => prev + 1);
-    });
-    checkComment({ postId: postId }).then((res) => {
-      console.log(res);
-      setCurrentCommentList(res);
     });
   }, []);
 
