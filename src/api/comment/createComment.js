@@ -1,3 +1,4 @@
 import { axiosPOST } from 'api/commonAxios/commonAxios';
 
-export const createComment = () => axiosPOST('/comment/create');
+//nickname, comment, id
+export const createComment = (req) => axiosPOST('/comment/create', req);
