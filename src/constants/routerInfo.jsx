@@ -25,8 +25,8 @@ export const router = createBrowserRouter([
         path: '/post/:postId',
         element: <PostDetail />,
         loader: async ({ params }) => {
-          const postDetailData = await findPost(+params.postid);
-          const commentList = await checkComment();
+          const postDetailData = await findPost(+params.postId);
+          const commentList = await checkComment({ postId: params.postId });
           return {
             postDetailData: postDetailData,
             commentList: commentList,

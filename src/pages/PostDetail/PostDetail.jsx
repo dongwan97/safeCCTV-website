@@ -29,14 +29,16 @@ import { increaseView } from 'api/post/increaseView';
 import { checkComment } from 'api/comment/checkComment';
 import { createComment } from 'api/comment/createComment';
 import { findPost } from 'api/post/findPost';
+import { editPost } from 'api/post/editPost';
+import { deletePost } from 'api/post/deletePost';
 
 export const PostDetail = () => {
-  // const loaderData = useLoaderData();
+  const loaderData = useLoaderData();
   const { postId } = useParams();
   const inputRef = useRef();
   const navigate = useNavigate();
-  const [postDetailData, setPostDetailData] = useState(samplePostDetailData.samplePostDetail[+postId]);
-  const [currentCommentList, setCurrentCommentList] = useState(sampleCommentList.commentList);
+  const [postDetailData, setPostDetailData] = useState(loaderData.postDetailData);
+  const [currentCommentList, setCurrentCommentList] = useState(loaderData.commentList);
   const [inputValue, setInputValue] = useState({ post: postDetailData.content, comment: '' });
   const [currentContent, setCurrentContent] = useState(postDetailData.content);
   const [currentViewCount, setCurrentViewCount] = useState(postDetailData.viewCount);
@@ -44,25 +46,33 @@ export const PostDetail = () => {
   const onClickCommentRegisterButton = () => {
     createComment({
       nickname: '이성훈',
-      content: '댓글 api 테스트',
-      id: '로그인구현안함',
-      commentId: '',
+      content: inputValue.comment,
+      id: process.env.REACT_APP_USER_ID,
+    }).then((res) => {
+      if (inputValue.comment.length === 0) return;
+      inputRef.current.disabled = true;
+      setTimeout(() => {
+        inputRef.current.disabled = false;
+        inputRef.current.focus();
+      }, 0); //한국어 입력 오류 방지용 코드입니다.
+
+      setCurrentCommentList((prev) =>
+        prev.concat({
+          commentId: currentCommentList[currentCommentList.length - 1].commentId + 1 ?? 0,
+          content: inputValue.comment,
+          nickname: '현재 로그인 한 사용자 닉네임',
+          date: '새 댓글 날짜',
+        })
+      );
+      setInputValue({ ...inputValue, comment: '' });
     });
-    setCurrentCommentList((prev) =>
-      prev.concat({
-        commentId: currentCommentList[currentCommentList.length - 1].commentId + 1,
-        content: inputValue.comment,
-        commentOwnerName: '현재 로그인 한 사용자 닉네임',
-        date: '새 댓글 날짜',
-      })
-    );
-    setInputValue({ ...inputValue, comment: '' });
   };
   const onClickDeleteTypo = () => {
-    //delete post api만 있으면 됩니다.
+    deletePost({ postId: +postId });
     navigate(-1); //확인 모달 띄우기
   };
   const onClickEditTypo = () => {
+    editPost({});
     setIsEditing((prev) => !prev);
   };
   const onChange = (e) => {
@@ -74,23 +84,7 @@ export const PostDetail = () => {
       if (!e.shiftKey) {
         e.preventDefault();
         if (e.target.name === 'comment') {
-          if (inputValue.comment.length === 0) return;
-          inputRef.current.disabled = true;
-          setTimeout(() => {
-            inputRef.current.disabled = false;
-            inputRef.current.focus();
-          }, 0); //한국어 입력 오류 방지용 코드입니다.
-
-          setCurrentCommentList((prev) =>
-            prev.concat({
-              commentId: currentCommentList[currentCommentList.length - 1].commentId + 1,
-              content: inputValue.comment,
-              commentOwnerName: '현재 로그인 한 사용자 닉네임',
-              date: '새 댓글 날짜',
-            })
-          );
-          setInputValue({ ...inputValue, comment: '' });
-          //댓글 저장 api
+          onClickCommentRegisterButton();
         } else if (e.target.name === 'post') {
           setCurrentContent(inputValue.post);
           setIsEditing(false);
@@ -99,8 +93,10 @@ export const PostDetail = () => {
     }
   };
   const deleteComment = (id) => {
-    setCurrentCommentList((prev) => prev.filter((comment) => comment.commentId !== id));
     //deleteComment api
+    deleteComment({ commentId: id }).then((res) => {
+      setCurrentCommentList((prev) => prev.filter((comment) => comment.commentId !== id));
+    });
   };
   useEffect(() => {
     findPost(postId).then((res) => {
@@ -126,10 +122,10 @@ export const PostDetail = () => {
       <UpperContainer>
         <LeftContainer>
           <Title>{postDetailData.title}</Title>
-          <Date>{postDetailData.date}</Date>
+          <Date>{postDetailData.uploadedAt}</Date>
         </LeftContainer>
         <RightContainer>
-          <PostOwnerName>{postDetailData.postOwnerName}</PostOwnerName>
+          <PostOwnerName>{postDetailData.nickname}</PostOwnerName>
           <FunctionTypoContainer>
             <EditTypo onClick={onClickEditTypo}>수정</EditTypo>
             <DeleteTypo onClick={onClickDeleteTypo}>삭제</DeleteTypo>
@@ -142,7 +138,7 @@ export const PostDetail = () => {
       ) : (
         <Content>{currentContent}</Content>
       )}
-      <ViewCount>조회수 : {postDetailData.viewCount}</ViewCount>
+      <ViewCount>조회수 : {currentViewCount}</ViewCount>
       <CommentContainer>
         {currentCommentList.map((comment) => (
           <Comment {...comment} key={comment.commentId} deleteComment={deleteComment} />
