@@ -22,7 +22,7 @@ import {
 } from './styled';
 import samplePostDetailData from 'constants/samplePostDetail.json';
 import sampleCommentList from 'constants/sampleComment.json';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLoaderData, useNavigate, useParams } from 'react-router-dom';
 import { Comment } from 'components/Comment';
 import { StyledButton } from 'components/StyledButton/StyledButton';
 import { increaseView } from 'api/post/increaseView';
@@ -31,6 +31,7 @@ import { createComment } from 'api/comment/createComment';
 import { findPost } from 'api/post/findPost';
 
 export const PostDetail = () => {
+  // const loaderData = useLoaderData();
   const { postId } = useParams();
   const inputRef = useRef();
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ export const PostDetail = () => {
   const [currentCommentList, setCurrentCommentList] = useState(sampleCommentList.commentList);
   const [inputValue, setInputValue] = useState({ post: postDetailData.content, comment: '' });
   const [currentContent, setCurrentContent] = useState(postDetailData.content);
+  const [currentViewCount, setCurrentViewCount] = useState(postDetailData.viewCount);
   const [isEditing, setIsEditing] = useState(false);
   const onClickCommentRegisterButton = () => {
     createComment({
@@ -101,15 +103,17 @@ export const PostDetail = () => {
     //deleteComment api
   };
   useEffect(() => {
-    findPost({ postId: postId }).then((res) => {
+    findPost(postId).then((res) => {
       console.log('findPost', res);
+      setPostDetailData(res);
+      setCurrentContent(res.content);
     });
     //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
     //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
-  }, []);
-  useEffect(() => {
+
     increaseView({ postId: postId }).then((res) => {
       console.log(res);
+      setCurrentViewCount((prev) => prev + 1);
     });
     checkComment({ postId: postId }).then((res) => {
       console.log(res);
