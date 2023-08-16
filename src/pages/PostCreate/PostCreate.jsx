@@ -3,6 +3,7 @@ import { ButtonContainer, CancelButton, ContentInput, Root, TitleInput, TitleTyp
 import { useNavigate } from 'react-router-dom';
 import { RegisterButton } from 'components/StyledButton';
 import { StyledButton } from 'components/StyledButton/StyledButton';
+import { createPost } from 'api/post/createPost';
 
 export const PostCreate = () => {
   const [inputValue, setInputValue] = useState({ title: '', content: '' });
@@ -11,8 +12,15 @@ export const PostCreate = () => {
     setInputValue({ ...inputValue, [target.name]: target.value });
   };
   const onClickRegisterButton = () => {
-    //등록 api
-    navigate('/main');
+    createPost({
+      title: inputValue.title,
+      nickname: '닉네임',
+      content: inputValue.content,
+      id: process.env.REACT_APP_USER_ID,
+    }).then((res) => {
+      console.log(res);
+      navigate('/main');
+    });
   };
   const onClickCancelButton = () => {
     navigate('/main');
