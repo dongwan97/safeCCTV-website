@@ -1,3 +1,3 @@
 import { axiosGET } from 'api/commonAxios/commonAxios';
 
-export const checkPost = (req) => axiosGET('/post/check/', req);
+export const checkPost = ({ postId }) => axiosGET('/post/check/', { postId: postId });

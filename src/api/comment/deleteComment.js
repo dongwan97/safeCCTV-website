@@ -1,3 +1,3 @@
 import { axiosDelete } from 'api/commonAxios/commonAxios';
 
-export const deleteComment = () => axiosDelete('/comment/delete');
+export const deleteComment = ({ commentId }) => axiosDelete('/comment/delete', { commentId: commentId });

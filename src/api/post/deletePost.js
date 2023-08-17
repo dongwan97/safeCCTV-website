@@ -1,3 +1,3 @@
 import { axiosDelete } from 'api/commonAxios/commonAxios';
 
-export const deletePost = () => axiosDelete('/post/delete');
+export const deletePost = ({ postId }) => axiosDelete('/post/delete', { postId: postId });

@@ -31,7 +31,6 @@ axiosInstance.interceptors.request.use((config) => {
   console.log(newConfig.data);
   return newConfig;
 });
-
 export const axiosGET = (url, params) => axiosInstance.get(url, { params }).then((res) => res.data);
 
 export const axiosPOST = (url, data) => axiosInstance.post(url, { ...data }).then((res) => res.data);
