@@ -12,6 +12,7 @@ export const Root = styled.div`
   z-index: 5;
   width: 100%;
   box-shadow: 1px 1px 5px gray;
+  overflow: hidden;
 `;
 
 export const HeaderContentWrapper = styled.div`
