@@ -32,6 +32,7 @@ import { checkPost } from 'api/post/checkPost';
 import { editPost } from 'api/post/editPost';
 import { deletePost } from 'api/post/deletePost';
 import { deleteComment } from 'api/comment/deleteComment';
+import { getFormattedDate } from 'utils/helper';
 
 export const PostDetail = () => {
   const loaderData = useLoaderData();
@@ -127,7 +128,7 @@ export const PostDetail = () => {
       <UpperContainer>
         <LeftContainer>
           <Title>{postDetailData.title}</Title>
-          <Date>{postDetailData.uploadedAt}</Date>
+          <Date>{getFormattedDate(postDetailData.uploadedAt)}</Date>
         </LeftContainer>
         <RightContainer>
           <PostOwnerName>{postDetailData.nickname}</PostOwnerName>
