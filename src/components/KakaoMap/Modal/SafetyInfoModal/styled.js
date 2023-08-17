@@ -18,7 +18,7 @@ export const DetailContainer = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 300px;
   background-color: #1f2127;
 `;
 export const Title = styled.p`

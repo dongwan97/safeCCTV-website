@@ -1,4 +1,4 @@
-import api from '../../api/axios';
+import axiosInstance, { axiosGET } from '../../api/commonAxios/commonAxios';
 import { KakaoMap } from 'components/KakaoMap';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,12 +25,13 @@ import {
 export const Main = () => {
   const navigate = useNavigate();
 
-  api.get('/post').then((res) => {
-    console.log(res);
-  });
-  api.get('/comment').then((res) => {
-    console.log(res);
-  });
+  axiosGET('/post')
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
   return (
     <Root>
