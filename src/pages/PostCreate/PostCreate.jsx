@@ -14,11 +14,11 @@ export const PostCreate = () => {
   const onClickRegisterButton = () => {
     createPost({
       title: inputValue.title,
-      nickname: '이성훈',
+      nickname: '성훈',
       id: process.env.REACT_APP_USER_ID,
       content: inputValue.content,
     }).then((res) => {
-      console.log(res);
+      console.log('createPostResponse', res);
       navigate('/main');
     });
   };

@@ -28,7 +28,7 @@ axiosInstance.interceptors.request.use((config) => {
     newConfig.data = decamelizeKey(newConfig.data);
   }
 
-  console.log(newConfig.data);
+  console.log('Request', newConfig.data);
   return newConfig;
 });
 export const axiosGET = (url, params) => axiosInstance.get(url, { params }).then((res) => res.data);

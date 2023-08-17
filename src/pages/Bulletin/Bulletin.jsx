@@ -15,7 +15,7 @@ export const Bulletin = () => {
   useEffect(() => {
     findAllPost().then((res) => {
       setCurrentPostList(res);
-      console.log(res);
+      console.log('findAllPostResponse', res);
     });
   }, []);
 

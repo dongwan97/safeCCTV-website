@@ -46,10 +46,10 @@ export const PostDetail = () => {
   const [isEditing, setIsEditing] = useState(false);
   const onClickCommentRegisterButton = () => {
     createComment({
-      nickname: '이성훈',
+      nickname: '성훈',
       content: inputValue.comment,
       id: +process.env.REACT_APP_USER_ID,
-      post_id: +postId,
+      postId: +postId,
     }).then((res) => {
       if (inputValue.comment.length === 0) return;
       inputRef.current.disabled = true;
@@ -60,7 +60,7 @@ export const PostDetail = () => {
 
       setCurrentCommentList((prev) =>
         prev.concat({
-          commentId: currentCommentList[currentCommentList.length - 1].commentId + 1 ?? 0,
+          commentId: 100,
           content: inputValue.comment,
           nickname: '현재 로그인 한 사용자 닉네임',
           date: '새 댓글 날짜',
@@ -71,8 +71,8 @@ export const PostDetail = () => {
   };
   const onClickDeleteTypo = () => {
     deletePost({ postId: +postId }).then((res) => {
-      console.log(res);
-      navigate(-1); //확인 모달 띄우기
+      console.log('delete', res);
+      navigate(-1);
     });
   };
   const onClickEditTypo = () => {
@@ -93,7 +93,7 @@ export const PostDetail = () => {
             title: postDetailData.title,
             content: inputValue.post,
           }).then((res) => {
-            console.log(res);
+            console.log('editPostResponse', res);
             setCurrentContent(inputValue.post);
             setIsEditing(false);
           });
@@ -108,11 +108,11 @@ export const PostDetail = () => {
   };
   useEffect(() => {
     increaseView({ postId: +postId }).then((res) => {
-      console.log(res);
+      console.log('increaseViewResponse', res);
       setCurrentViewCount((prev) => prev + 1);
     });
     checkComment({ postId: +postId }).then((res) => {
-      console.log(res);
+      console.log('checkCommentResponse', res);
       setCurrentCommentList(res);
     });
   }, []);

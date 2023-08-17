@@ -34,7 +34,7 @@ export const Comment = ({ commentId, nickname: commentOwnerName, content, date, 
         content: inputValue,
         commentId: commentId,
       }).then((res) => {
-        console.log(res);
+        console.log('editCommentResponse', res);
         setCurrentContent(inputValue);
         setIsEditing(false);
       });
