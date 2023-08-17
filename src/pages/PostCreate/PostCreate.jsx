@@ -19,7 +19,7 @@ export const PostCreate = () => {
       content: inputValue.content,
     }).then((res) => {
       console.log('createPostResponse', res);
-      navigate('/main');
+      navigate(-1);
     });
   };
   const onClickCancelButton = () => {

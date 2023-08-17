@@ -92,6 +92,9 @@ export const PostDetail = () => {
           editPost({
             title: postDetailData.title,
             content: inputValue.post,
+            postId: +postId,
+            nickname: '성훈',
+            id: process.env.REACT_APP_USER_ID,
           }).then((res) => {
             console.log('editPostResponse', res);
             setCurrentContent(inputValue.post);
