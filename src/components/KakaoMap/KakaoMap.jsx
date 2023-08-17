@@ -1,19 +1,24 @@
 import { Root } from './styled';
 import React, { useState } from 'react';
-import { SmallModal, BigModal } from './modal';
-import CongestionSafetyIndicator from './CongestionSafetyIndicator';
-import LineChart from './Chart';
 import { Map } from 'react-kakao-maps-sdk';
+import { TooltipModal } from './Modal/TooltipModal';
+import { SafetyInfoModal } from './Modal/SafetyInfoModal';
 
 export const KakaoMap = () => {
-  const [isBigModalOpen, setIsBigModalOpen] = useState(false);
-
-  const handleOpenBigModal = () => {
-    setIsBigModalOpen(true);
+  const [isTooltipModalOpen, setIsTooltipModalOpen] = useState(false);
+  const [isSafetyInfoModalOpen, setIsSafetyInfoModalOpen] = useState(false);
+  const closeTooltipModal = () => {
+    setIsTooltipModalOpen(false);
+  };
+  const openTooltipModal = () => {
+    setIsTooltipModalOpen(true);
   };
 
-  const handleCloseBigModal = () => {
-    setIsBigModalOpen(false);
+  const closeSafetyInfoModal = () => {
+    setIsSafetyInfoModalOpen(false);
+  };
+  const openSafetyInfoModal = () => {
+    setIsSafetyInfoModalOpen(true);
   };
 
   return (
@@ -24,18 +29,13 @@ export const KakaoMap = () => {
         style={{ width: '800px', height: '600px' }} // 지도 크기
         level={3} // 지도 확대 레벨
       ></Map>
-      <h1>Hover and Click Modal Example</h1>
-      <SmallModal content="Hover Me" onOpenBigModal={handleOpenBigModal}>
-        {/* 작은 모달창의 내용 */}
-        <h3>small Modal!</h3>
-        <CongestionSafetyIndicator congestion={80} safety={60} />
-      </SmallModal>
-      <BigModal isOpen={isBigModalOpen} onClose={handleCloseBigModal}>
-        {/* 더 큰 모달창의 내용 */}
-        <h2>Hello, I am a Big Modal!</h2>
-        <p>Big modal content goes here.</p>
-        <LineChart />
-      </BigModal>
+      <div onMouseEnter={openTooltipModal} onMouseLeave={closeTooltipModal}>
+        툴팁 열기
+      </div>
+      {isTooltipModalOpen && (
+        <TooltipModal openTooltipModal={openTooltipModal} openSafetyInfoModal={openSafetyInfoModal} />
+      )}
+      {isSafetyInfoModalOpen && <SafetyInfoModal closeModal={closeSafetyInfoModal} />}
     </Root>
   );
 };

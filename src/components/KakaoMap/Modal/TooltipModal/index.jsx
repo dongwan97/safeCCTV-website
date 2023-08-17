@@ -1,0 +1,1 @@
+export { TooltipModal } from './TooltipModal';
