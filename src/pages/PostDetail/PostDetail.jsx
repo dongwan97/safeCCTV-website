@@ -59,12 +59,14 @@ export const PostDetail = () => {
       }, 0); //한국어 입력 오류 방지용 코드입니다.
 
       setCurrentCommentList((prev) =>
-        prev.concat({
-          commentId: 100,
-          content: inputValue.comment,
-          nickname: '현재 로그인 한 사용자 닉네임',
-          date: '새 댓글 날짜',
-        })
+        [
+          {
+            commentId: currentCommentList[0]?.commentId + 1 ?? 0,
+            content: inputValue.comment,
+            nickname: '현재 로그인 한 사용자 닉네임',
+            date: '새 댓글 날짜',
+          },
+        ].concat(prev)
       );
       setInputValue({ ...inputValue, comment: '' });
     });
