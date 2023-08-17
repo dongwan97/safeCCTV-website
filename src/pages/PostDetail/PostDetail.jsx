@@ -31,6 +31,7 @@ import { createComment } from 'api/comment/createComment';
 import { checkPost } from 'api/post/checkPost';
 import { editPost } from 'api/post/editPost';
 import { deletePost } from 'api/post/deletePost';
+import { deleteComment } from 'api/comment/deleteComment';
 
 export const PostDetail = () => {
   const loaderData = useLoaderData();
@@ -47,8 +48,8 @@ export const PostDetail = () => {
     createComment({
       nickname: '이성훈',
       content: inputValue.comment,
-      id: process.env.REACT_APP_USER_ID,
-      postId: +postId,
+      id: +process.env.REACT_APP_USER_ID,
+      post_id: +postId,
     }).then((res) => {
       if (inputValue.comment.length === 0) return;
       inputRef.current.disabled = true;
@@ -69,11 +70,12 @@ export const PostDetail = () => {
     });
   };
   const onClickDeleteTypo = () => {
-    deletePost({ postId: +postId });
-    navigate(-1); //확인 모달 띄우기
+    deletePost({ postId: +postId }).then((res) => {
+      console.log(res);
+      navigate(-1); //확인 모달 띄우기
+    });
   };
   const onClickEditTypo = () => {
-    editPost({});
     setIsEditing((prev) => !prev);
   };
   const onChange = (e) => {
@@ -87,25 +89,31 @@ export const PostDetail = () => {
         if (e.target.name === 'comment') {
           onClickCommentRegisterButton();
         } else if (e.target.name === 'post') {
-          setCurrentContent(inputValue.post);
-          setIsEditing(false);
+          editPost({
+            title: postDetailData.title,
+            content: inputValue.post,
+          }).then((res) => {
+            console.log(res);
+            setCurrentContent(inputValue.post);
+            setIsEditing(false);
+          });
         }
       }
     }
   };
-  const deleteComment = (id) => {
-    //deleteComment api
-    deleteComment({ commentId: id }).then((res) => {
-      setCurrentCommentList((prev) => prev.filter((comment) => comment.commentId !== id));
+  const removeComment = (commentId) => () => {
+    deleteComment({ commentId: commentId }).then((res) => {
+      setCurrentCommentList((prev) => prev.filter((comment) => comment.commentId !== commentId));
     });
   };
   useEffect(() => {
-    //api로 detail 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
-    //api로 comment 정보 받아옵니다. 백엔드 완료후 react router loader 함수로 다시 구현
-
-    increaseView({ postId: postId }).then((res) => {
+    increaseView({ postId: +postId }).then((res) => {
       console.log(res);
       setCurrentViewCount((prev) => prev + 1);
+    });
+    checkComment({ postId: +postId }).then((res) => {
+      console.log(res);
+      setCurrentCommentList(res);
     });
   }, []);
 
@@ -133,7 +141,7 @@ export const PostDetail = () => {
       <ViewCount>조회수 : {currentViewCount}</ViewCount>
       <CommentContainer>
         {currentCommentList.map((comment) => (
-          <Comment {...comment} key={comment.commentId} deleteComment={deleteComment} />
+          <Comment {...comment} key={comment.commentId} deleteComment={removeComment(comment.commentId)} />
         ))}
       </CommentContainer>
       <CommentInputContainer>

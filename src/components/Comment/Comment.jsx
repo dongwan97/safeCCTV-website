@@ -10,6 +10,7 @@ import {
   Root,
   UpperContainer,
 } from './styled';
+import { editComment } from 'api/comment/editComment';
 
 export const Comment = ({ commentId, nickname: commentOwnerName, content, date, deleteComment }) => {
   const inputRef = useRef();
@@ -29,9 +30,14 @@ export const Comment = ({ commentId, nickname: commentOwnerName, content, date, 
     if (e.key === 'Enter') {
       if (e.shiftKey) return;
       e.preventDefault();
-      //edit comment api
-      setCurrentContent(inputValue);
-      setIsEditing(false);
+      editComment({
+        content: inputValue,
+        commentId: commentId,
+      }).then((res) => {
+        console.log(res);
+        setCurrentContent(inputValue);
+        setIsEditing(false);
+      });
     }
   };
   useEffect(() => {
