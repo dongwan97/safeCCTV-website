@@ -24,8 +24,6 @@ const SmallModal = ({ content, onOpenBigModal, children }) => {
 };
 
 const BigModal = ({ isOpen, onClose, children }) => {
-  if (!isOpen) return null;
-
   return (
     <BigModalOverlay>
       <BigModalContent>

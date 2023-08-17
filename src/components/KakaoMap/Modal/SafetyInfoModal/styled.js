@@ -13,14 +13,6 @@ export const Root = styled.div`
   max-height: 100vh;
 `;
 
-export const ResponsiveContainer = styled.div`
-  margin-top: 30px;
-  display: flex;
-  gap: 30px;
-  @media (max-width: 800px) {
-    flex-wrap: wrap;
-  }
-`;
 export const DetailContainer = styled.div`
   border-radius: 20px;
   box-sizing: border-box;
@@ -46,7 +38,6 @@ export const Container = styled.div`
 export const TopContainer = styled(Container)``;
 
 export const SafetyContainer = styled(DetailContainer)`
-  flex-basis: 300px;
   padding: 30px;
 `;
 
@@ -73,7 +64,7 @@ export const SafetyStats = styled.p`
 `;
 
 export const SafetyGraphWrapper = styled(DetailContainer)`
-  flex-basis: 700px;
+  height: 100%;
   box-sizing: border-box;
   padding: 27px 24px;
   display: flex;
@@ -87,13 +78,13 @@ export const Graph = styled.div`
 `;
 export const CenterContainer = styled(Container)``;
 export const RegionSafetyContainer = styled(DetailContainer)`
-  flex-basis: 300px;
   padding: 20px 27px;
 `;
 export const RegionSafetyTable = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 288px;
   align-self: center;
   font-size: 20px;
   font-weight: 500;
@@ -124,7 +115,6 @@ export const TableData = styled.p`
 `;
 
 export const MaxSpeedContainer = styled(DetailContainer)`
-  flex-basis: content;
   text-align: center;
   padding: 50px 20px;
   white-space: nowrap;

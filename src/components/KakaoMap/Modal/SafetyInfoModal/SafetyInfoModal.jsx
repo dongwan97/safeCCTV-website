@@ -28,7 +28,6 @@ import {
   RealtimeContainer,
   RealtimeVehicleContainer,
   RealtimeWeatherContainer,
-  ResponsiveContainer,
 } from './styled';
 
 export const SafetyInfoModal = ({ closeModal }) => {
@@ -39,7 +38,7 @@ export const SafetyInfoModal = ({ closeModal }) => {
     <ModalWrapper onClick={closeModal}>
       <Root onClick={onClickRoot}>
         <Title>광진구 Dashboard</Title>
-        <ResponsiveContainer>
+        <TopContainer>
           <SafetyContainer>
             <DetailContainerTitle>오늘의 안전도</DetailContainerTitle>
             <SafetyCircle>
@@ -50,6 +49,8 @@ export const SafetyInfoModal = ({ closeModal }) => {
             <DetailContainerTitle>실시간 안전도 추이</DetailContainerTitle>
             <Graph>그래프</Graph>
           </SafetyGraphWrapper>
+        </TopContainer>
+        <CenterContainer>
           <RegionSafetyContainer>
             <DetailContainerTitle>지역별 안전도 현황</DetailContainerTitle>
             <RegionSafetyTable>
@@ -87,13 +88,15 @@ export const SafetyInfoModal = ({ closeModal }) => {
               <Card title="현재 보행자 수" count={17} />
             </CardContainer>
           </RealtimeContainer>
+        </CenterContainer>
+        <BottomContainer>
           <RealtimeVehicleContainer>
             <DetailContainerTitle>실시간 차량 현황</DetailContainerTitle>
           </RealtimeVehicleContainer>
           <RealtimeWeatherContainer>
             <DetailContainerTitle>실시간 기상 상태</DetailContainerTitle>
           </RealtimeWeatherContainer>
-        </ResponsiveContainer>
+        </BottomContainer>
       </Root>
     </ModalWrapper>
   );
