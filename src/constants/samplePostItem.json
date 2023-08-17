@@ -4,28 +4,28 @@
       "postId": 0,
       "title": "제목",
       "viewCount": 5,
-      "date": "2023-07-21",
+      "uploadedAt": "2023-07-21",
       "nickname": "이성훈"
     },
     {
       "postId": 1,
       "title": "제목",
       "viewCount": 10,
-      "date": "2023-07-22",
+      "uploadedAt": "2023-07-22",
       "nickname": "안재형"
     },
     {
       "postId": 2,
       "title": "제목",
       "viewCount": 1,
-      "date": "2023-07-25",
+      "uploadedAt": "2023-07-25",
       "nickname": "이윤서"
     },
     {
       "postId": 3,
       "title": "제목",
       "viewCount": 3,
-      "date": "2023-07-30",
+      "uploadedAt": "2023-07-30",
       "nickname": "김동완"
     }
   ]
