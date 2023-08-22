@@ -31,14 +31,15 @@ import {
   ResponsiveContainer,
 } from './styled';
 
-export const SafetyInfoModal = ({ closeModal }) => {
+export const SafetyInfoModal = ({ closeModal, title }) => {
   const onClickRoot = (e) => {
     e.stopPropagation();
   };
+
   return (
     <ModalWrapper onClick={closeModal}>
       <Root onClick={onClickRoot}>
-        <Title>광진구 Dashboard</Title>
+        <Title>{title} Dashboard</Title>
         <ResponsiveContainer>
           <SafetyContainer>
             <DetailContainerTitle>오늘의 안전도</DetailContainerTitle>

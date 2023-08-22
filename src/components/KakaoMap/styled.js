@@ -69,3 +69,8 @@ export const SafetyBar = styled(Bar)`
 export const Label = styled.div`
   margin-left: 10px;
 `;
+
+export const MapInfoWindowContent = styled.div`
+  width: 150px;
+  text-align: center;
+`;

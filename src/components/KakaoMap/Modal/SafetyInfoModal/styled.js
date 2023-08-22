@@ -10,16 +10,16 @@ export const Root = styled.div`
   color: #ffffff;
   box-sizing: border-box;
   padding: 30px 80px;
-  max-height: 100vh;
+  width: 80vw;
+  height: 90vh;
+  overflow-y: scroll;
 `;
 
 export const ResponsiveContainer = styled.div`
   margin-top: 30px;
   display: flex;
   gap: 30px;
-  @media (max-width: 800px) {
-    flex-wrap: wrap;
-  }
+  flex-wrap: wrap;
 `;
 export const DetailContainer = styled.div`
   border-radius: 20px;
