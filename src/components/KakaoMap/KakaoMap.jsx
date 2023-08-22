@@ -28,7 +28,7 @@ export const KakaoMap = () => {
 
   return (
     <Root>
-      <Map center={{ lat: 37.489844, lng: 127.002296 }} level={4} style={{ width: '100%', height: '1000px' }}>
+      <Map center={{ lat: 37.489844, lng: 127.002296 }} level={4} style={{ width: '100%', height: '60vh' }}>
         {positions.map((position, index) => (
           <MapMarker
             key={index}

@@ -1,3 +1,3 @@
 import { axiosGET } from 'api/commonAxios/commonAxios';
 
-export const findRealTimeData = () => axiosGET('/data/now');
+export const findRealTimeData = ({ region }) => axiosGET('/data/now', { region: region });

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ModalWrapper } from '../commonStyled';
 import { Card } from './components/Card';
 import { CardContainer } from './components/Card/styled';
@@ -30,12 +31,33 @@ import {
   RealtimeWeatherContainer,
   ResponsiveContainer,
 } from './styled';
+import { findAccumulatedData } from 'api/hantech/findAccumulatedData';
+import { findAllData } from 'api/hantech/findAllData';
+import { findRealTimeData } from 'api/hantech/findRealTimeData';
+import { nowTotal } from 'api/hantech/nowTotal';
 
 export const SafetyInfoModal = ({ closeModal, title }) => {
+  const [findRealTimeDataResponse, setFindRealTimeDataResponse] = useState();
+  const [findAccumulateDataResponse, setFindAccumulateDataResponse] = useState();
+  const [nowTotalResponse, setNowTotalResponse] = useState();
+
   const onClickRoot = (e) => {
     e.stopPropagation();
   };
-
+  useEffect(() => {
+    findRealTimeData({ region: 'nokdong' }).then((res) => {
+      console.log('findRealTimeDataResponse', res);
+      setFindRealTimeDataResponse(res);
+    });
+    findAccumulatedData({ region: 'nokdong' }).then((res) => {
+      console.log('findAccumulatedDataResponse', res);
+      setFindAccumulateDataResponse(res);
+    });
+    nowTotal({ region: 'nokdong' }).then((res) => {
+      console.log('nowTotalResponse', res);
+      setNowTotalResponse(res);
+    });
+  }, []);
   return (
     <ModalWrapper onClick={closeModal}>
       <Root onClick={onClickRoot}>
@@ -71,7 +93,7 @@ export const SafetyInfoModal = ({ closeModal, title }) => {
           <MaxSpeedContainer>
             <MaxSpeedTopTypo>현재까지의 최고속도는</MaxSpeedTopTypo>
             <MaxSpeedCenterTypo>
-              <MaxSpeedRedTypo>130</MaxSpeedRedTypo>km
+              <MaxSpeedRedTypo>{nowTotalResponse?.todayMax}</MaxSpeedRedTypo>km
             </MaxSpeedCenterTypo>
             <MaxSpeedBottomTypo>
               어제의 최고속도는 100km 이며
@@ -82,10 +104,10 @@ export const SafetyInfoModal = ({ closeModal, title }) => {
           <RealtimeContainer>
             <DetailContainerTitle>실시간 차량 및 보행자</DetailContainerTitle>
             <CardContainer>
-              <Card title="현재 보행자 수" count={17} />
-              <Card title="현재 보행자 수" count={17} />
-              <Card title="현재 보행자 수" count={17} />
-              <Card title="현재 보행자 수" count={17} />
+              <Card title="현재 보행자 수" count={findRealTimeDataResponse?.peopleCount} />
+              <Card title="누적 보행자 수" count={nowTotalResponse?.peopleTotal} />
+              <Card title="현재 챠량 대수" count={findRealTimeDataResponse?.carCount} />
+              <Card title="누적 챠량 대수" count={nowTotalResponse?.carTotal} />
             </CardContainer>
           </RealtimeContainer>
           <RealtimeVehicleContainer>
