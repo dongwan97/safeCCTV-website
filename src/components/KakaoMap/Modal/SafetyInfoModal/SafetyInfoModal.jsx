@@ -36,7 +36,7 @@ import { findAllData } from 'api/hantech/findAllData';
 import { findRealTimeData } from 'api/hantech/findRealTimeData';
 import { nowTotal } from 'api/hantech/nowTotal';
 
-export const SafetyInfoModal = ({ closeModal, title }) => {
+export const SafetyInfoModal = ({ closeModal, title, region }) => {
   const [findRealTimeDataResponse, setFindRealTimeDataResponse] = useState();
   const [findAccumulateDataResponse, setFindAccumulateDataResponse] = useState();
   const [nowTotalResponse, setNowTotalResponse] = useState();
@@ -45,15 +45,15 @@ export const SafetyInfoModal = ({ closeModal, title }) => {
     e.stopPropagation();
   };
   useEffect(() => {
-    findRealTimeData({ region: 'nokdong' }).then((res) => {
+    findRealTimeData({ region: region }).then((res) => {
       console.log('findRealTimeDataResponse', res);
       setFindRealTimeDataResponse(res);
     });
-    findAccumulatedData({ region: 'nokdong' }).then((res) => {
+    findAccumulatedData({ region: region }).then((res) => {
       console.log('findAccumulatedDataResponse', res);
       setFindAccumulateDataResponse(res);
     });
-    nowTotal({ region: 'nokdong' }).then((res) => {
+    nowTotal({ region: region }).then((res) => {
       console.log('nowTotalResponse', res);
       setNowTotalResponse(res);
     });
