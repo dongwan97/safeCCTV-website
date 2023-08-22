@@ -20,15 +20,16 @@ export const KakaoMap = () => {
       content: '서울 서초고등학교',
       lat: 37.48916,
       lng: 127.006103,
+      region: 'ganseong',
     },
-    { content: '서울 고등학교', lat: 37.484227, lng: 127.005023 },
-    { content: '서울 방일초등학교', lat: 37.485307, lng: 126.997942 },
-    { content: '서울 방배중학교', lat: 37.494702, lng: 126.998253 },
+    { content: '서울 고등학교', lat: 37.484227, lng: 127.005023, region: 'dongbu' },
+    { content: '서울 방일초등학교', lat: 37.485307, lng: 126.997942, region: 'kwangjin_jayang' },
+    { content: '서울 방배중학교', lat: 37.494702, lng: 126.998253, region: 'nokdong' },
   ];
 
   return (
     <Root>
-      <Map center={{ lat: 37.489844, lng: 127.002296 }} level={4} style={{ width: '100%', height: '60vh' }}>
+      <Map center={{ lat: 37.489844, lng: 127.002296 }} level={5} style={{ width: '100%', height: '60vh' }}>
         {positions.map((position, index) => (
           <MapMarker
             key={index}
@@ -49,7 +50,13 @@ export const KakaoMap = () => {
         )}
       </Map>
 
-      {isSafetyInfoModalOpen && <SafetyInfoModal closeModal={closeSafetyInfoModal} title={selectedMarker.content} />}
+      {isSafetyInfoModalOpen && (
+        <SafetyInfoModal
+          closeModal={closeSafetyInfoModal}
+          title={selectedMarker.content}
+          region={selectedMarker.region}
+        />
+      )}
     </Root>
   );
 };
