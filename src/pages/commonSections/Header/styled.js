@@ -1,3 +1,4 @@
+import { editComment } from 'api/comment/editComment';
 import { HEADER_HEIGHT, HEADER_MAX_WIDTH, HEADER_MIN_WIDTH } from 'constants/layout';
 import styled from 'styled-components';
 
@@ -13,6 +14,7 @@ export const Root = styled.div`
   width: 100%;
   box-shadow: 1px 1px 5px gray;
   overflow: hidden;
+  background-color: black;
 `;
 
 export const HeaderContentWrapper = styled.div`
@@ -42,6 +44,9 @@ export const NavigateWrapper = styled.div`
 `;
 
 export const NavigateTypo = styled.p`
+  &:hover {
+    color: white;
+  }
   font-size: 15px;
   font-weight: 900;
   vertical-align: middle;
