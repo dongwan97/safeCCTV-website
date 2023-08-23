@@ -10,9 +10,17 @@ export const Root = styled.div`
   color: #ffffff;
   box-sizing: border-box;
   padding: 30px 80px;
-  max-height: 100vh;
+  width: 70vw;
+  height: 90vh;
+  overflow-y: scroll;
 `;
 
+export const ResponsiveContainer = styled.div`
+  margin-top: 30px;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+`;
 export const DetailContainer = styled.div`
   border-radius: 20px;
   box-sizing: border-box;
@@ -38,6 +46,7 @@ export const Container = styled.div`
 export const TopContainer = styled(Container)``;
 
 export const SafetyContainer = styled(DetailContainer)`
+  flex-basis: 300px;
   padding: 30px;
 `;
 
@@ -64,27 +73,25 @@ export const SafetyStats = styled.p`
 `;
 
 export const SafetyGraphWrapper = styled(DetailContainer)`
-  height: 100%;
+  flex-basis: 500px;
   box-sizing: border-box;
-  padding: 27px 24px;
+  padding: 15px 24px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 `;
 export const Graph = styled.div`
-  background-color: brown;
   width: 100%;
   height: 100%;
 `;
 export const CenterContainer = styled(Container)``;
 export const RegionSafetyContainer = styled(DetailContainer)`
+  flex-basis: 300px;
   padding: 20px 27px;
 `;
 export const RegionSafetyTable = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 288px;
   align-self: center;
   font-size: 20px;
   font-weight: 500;
@@ -99,7 +106,7 @@ export const TableRow = styled.div`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 9px 30px;
+  padding: 15px 30px;
   &:first-child {
     background: #2a2c32;
   }
@@ -115,9 +122,10 @@ export const TableData = styled.p`
 `;
 
 export const MaxSpeedContainer = styled(DetailContainer)`
+  flex-basis: 300px;
   text-align: center;
-  padding: 50px 20px;
-  white-space: nowrap;
+  justify-content: center;
+  padding: 20px;
 `;
 
 export const MaxSpeedTopTypo = styled.p`
@@ -140,16 +148,26 @@ export const MaxSpeedBottomTypo = styled.p`
 `;
 
 export const RealtimeContainer = styled(DetailContainer)`
-  padding: 45px 20px;
+  padding: 25px 20px;
+  flex-grow: 1;
 `;
 
 export const BottomContainer = styled(Container)``;
 
 export const RealtimeVehicleContainer = styled(DetailContainer)`
-  padding: 27px 24px;
-  flex-grow: 1;
+  padding: 15px 24px;
+  flex-basis: 500px;
 `;
 
 export const RealtimeWeatherContainer = styled(DetailContainer)`
   padding: 27px 14px;
+`;
+
+export const LeftCardContainer = styled.div`
+  display: flex;
+  column-gap: 20px;
+`;
+export const RightCardContainer = styled.div`
+  display: flex;
+  column-gap: 20px;
 `;

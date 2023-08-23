@@ -1,34 +1,11 @@
-import { Root } from './styled';
-import React, { useState, useEffect } from 'react';
+import { MapInfoWindowContent, MapInfoWindowWrapper, MapMarkerWrapper, Root } from './styled';
+import React, { useState } from 'react';
 import { Map, MapMarker, MapInfoWindow } from 'react-kakao-maps-sdk';
-import { TooltipModal } from './Modal/TooltipModal';
 import { SafetyInfoModal } from './Modal/SafetyInfoModal';
-import { SmallModal, BigModal } from './modal';
-import CongestionSafetyIndicator from './CongestionSafetyIndicator';
-import LineChart from './Chart';
-import bannerImg from 'assets/images/banner.jpg'
-
-
 
 export const KakaoMap = () => {
-  const [isBigModalOpen, setIsBigModalOpen] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState(null);
-
-  const handleOpenBigModal = () => {
-    setIsBigModalOpen(true);
-  };
-
-  const handleCloseBigModal = () => {
-    setIsBigModalOpen(false);
-  };
-  const [isTooltipModalOpen, setIsTooltipModalOpen] = useState(false);
   const [isSafetyInfoModalOpen, setIsSafetyInfoModalOpen] = useState(false);
-  const closeTooltipModal = () => {
-    setIsTooltipModalOpen(false);
-  };
-  const openTooltipModal = () => {
-    setIsTooltipModalOpen(true);
-  };
 
   const closeSafetyInfoModal = () => {
     setIsSafetyInfoModalOpen(false);
@@ -38,63 +15,47 @@ export const KakaoMap = () => {
   };
 
   const positions = [
-    { content: '서울 서초고등학교', lat: 37.489160, lng: 127.006103 },
-    { content: '서울 고등학교', lat: 37.484227, lng: 127.005023 },
-    { content: '서울 방일초등학교', lat: 37.485307, lng: 126.997942 },
-    { content: '서울 방배중학교', lat: 37.494702, lng: 126.998253 },
+    {
+      content: '서울 서초고등학교',
+      lat: 37.48916,
+      lng: 127.006103,
+      region: 'ganseong',
+    },
+    { content: '서울 고등학교', lat: 37.484227, lng: 127.005023, region: 'dongbu' },
+    { content: '서울 방일초등학교', lat: 37.485307, lng: 126.997942, region: 'kwangjin_jayang' },
+    { content: '서울 방배중학교', lat: 37.494702, lng: 126.998253, region: 'nokdong' },
   ];
 
   return (
     <Root>
-      <Map
-        center={{ lat: 37.489844, lng: 127.002296 }}
-        level={4}
-        style={{ width: '100%', height: '1000px' }}
-      >
+      <Map center={{ lat: 37.489844, lng: 127.002296 }} level={5} style={{ width: '100%', height: '60vh' }}>
         {positions.map((position, index) => (
           <MapMarker
             key={index}
-            position={{ lat: position.lat, lng: position.lng }}
-            // onMouseOver={() => setSelectedMarker(position)}
-            // onMouseOut={() => setSelectedMarker(null)}
-            onClick={() => {
-              if (selectedMarker === position) {
-                setSelectedMarker(null); // 이미 선택된 마커를 다시 클릭하면 선택 해제
-              } else {
-                setSelectedMarker(position); // 다른 마커를 클릭하면 해당 마커 선택
-              }}}
+            position={position}
+            onMouseOver={() => {
+              setSelectedMarker(position);
+            }}
+            onClick={openSafetyInfoModal}
           />
         ))}
 
         {selectedMarker && (
-          <MapInfoWindow
-            position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
-          >
-            <div>{selectedMarker.content}</div>
+          <MapInfoWindow position={{ lat: selectedMarker.lat + 0.0007, lng: selectedMarker.lng }}>
+            <MapInfoWindowContent onClick={openSafetyInfoModal} onMouseOver={() => setSelectedMarker(selectedMarker)}>
+              {selectedMarker.content}
+            </MapInfoWindowContent>
           </MapInfoWindow>
         )}
       </Map>
 
-      {/* <h1>Hover and Click Modal Example</h1>
-
-      <SmallModal content="Hover Me" onOpenBigModal={handleOpenBigModal}>
-        <h3>small Modal!</h3>
-        <CongestionSafetyIndicator congestion={80} safety={60} />
-      </SmallModal>
-      <BigModal isOpen={isBigModalOpen} onClose={handleCloseBigModal}>
-        <h2>Hello, I am a Big Modal!</h2>
-        <p>Big modal content goes here.</p>
-        <LineChart />
-      </BigModal> */}
-      <div onMouseEnter={openTooltipModal} onMouseLeave={closeTooltipModal}>
-        툴팁 열기
-      </div>
-      {isTooltipModalOpen && (
-        <TooltipModal openTooltipModal={openTooltipModal} openSafetyInfoModal={openSafetyInfoModal} />
+      {isSafetyInfoModalOpen && (
+        <SafetyInfoModal
+          closeModal={closeSafetyInfoModal}
+          title={selectedMarker.content}
+          region={selectedMarker.region}
+        />
       )}
-      {isSafetyInfoModalOpen && <SafetyInfoModal closeModal={closeSafetyInfoModal} />}
     </Root>
   );
 };
-
-

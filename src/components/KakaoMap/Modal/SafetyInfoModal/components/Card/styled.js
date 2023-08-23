@@ -28,8 +28,3 @@ export const Count = styled.p`
   font-weight: 800;
   margin-top: 10px;
 `;
-
-export const CardContainer = styled.div`
-  display: flex;
-  column-gap: 30px;
-`;
