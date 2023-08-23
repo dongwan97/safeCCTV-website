@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 export const Root = styled.div`
   //Body Root
+  box-sizing: border-box;
   position: relative;
   margin: 0 auto;
-  margin-top: ${HEADER_HEIGHT}px;
+  padding-top: ${HEADER_HEIGHT}px;
   max-width: ${BODY_MAX_WIDTH}px;
   min-width: ${BODY_MIN_WIDTH}px;
 `;
