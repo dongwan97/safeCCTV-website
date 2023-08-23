@@ -1,6 +1,24 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
+const fadeIn = keyframes`
+ from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+`;
+
+const fadeOut = keyframes`
+ from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+`;
 export const Root = styled.div`
+  z-index: 6;
   font-family: Inter !important;
   position: fixed;
   left: 50%;
@@ -13,6 +31,16 @@ export const Root = styled.div`
   width: 70vw;
   height: 90vh;
   overflow-y: scroll;
+  animation-name: ${(props) =>
+    props.isOpen
+      ? css`
+          ${fadeIn}
+        `
+      : css`
+          ${fadeOut}
+        `};
+  animation-duration: 0.9s;
+  animation-fill-mode: forwards;
 `;
 
 export const ResponsiveContainer = styled.div`
