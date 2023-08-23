@@ -4,7 +4,7 @@ import {
   CommentInput,
   CommentInputContainer,
   Content,
-  Date,
+  Date as UploadedAt,
   DeleteTypo,
   EditInput,
   EditTypo,
@@ -35,6 +35,7 @@ import { deleteComment } from 'api/comment/deleteComment';
 import { getFormattedDate } from 'utils/helper';
 
 export const PostDetail = () => {
+  const now = new Date();
   const loaderData = useLoaderData();
   const { postId } = useParams();
   const inputRef = useRef();
@@ -64,8 +65,8 @@ export const PostDetail = () => {
           {
             commentId: currentCommentList[0]?.commentId + 1 ?? 0,
             content: inputValue.comment,
-            nickname: '현재 로그인 한 사용자 닉네임',
-            date: '새 댓글 날짜',
+            nickname: '성훈',
+            uploadedAt: now.toISOString(),
           },
         ].concat(prev)
       );
@@ -128,7 +129,7 @@ export const PostDetail = () => {
       <UpperContainer>
         <LeftContainer>
           <Title>{postDetailData.title}</Title>
-          <Date>{getFormattedDate(postDetailData.uploadedAt)}</Date>
+          <UploadedAt>{getFormattedDate(postDetailData.uploadedAt)}</UploadedAt>
         </LeftContainer>
         <RightContainer>
           <PostOwnerName>{postDetailData.nickname}</PostOwnerName>
@@ -151,7 +152,7 @@ export const PostDetail = () => {
         ))}
       </CommentContainer>
       <CommentInputContainer>
-        <UserNickname>로그인한 사용자의 닉네임</UserNickname>
+        <UserNickname>성훈</UserNickname>
         <CommentInput
           placeholder="댓글을 입력하세요"
           name="comment"

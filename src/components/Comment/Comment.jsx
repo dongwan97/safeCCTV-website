@@ -11,8 +11,9 @@ import {
   UpperContainer,
 } from './styled';
 import { editComment } from 'api/comment/editComment';
+import { getFormattedDate } from 'utils/helper';
 
-export const Comment = ({ commentId, nickname: commentOwnerName, content, date, deleteComment }) => {
+export const Comment = ({ commentId, nickname: commentOwnerName, content, uploadedAt, deleteComment }) => {
   const inputRef = useRef();
   const [currentContent, setCurrentContent] = useState(content);
   const [inputValue, setInputValue] = useState(content);
@@ -21,7 +22,7 @@ export const Comment = ({ commentId, nickname: commentOwnerName, content, date, 
     setIsEditing((prev) => !prev);
   };
   const onClickDeleteTypo = () => {
-    deleteComment(commentId);
+    deleteComment({ commentId: commentId });
   };
   const onChange = ({ target: { value } }) => {
     setInputValue(value);
@@ -51,10 +52,8 @@ export const Comment = ({ commentId, nickname: commentOwnerName, content, date, 
   return (
     <Root>
       <UpperContainer>
-        <CommentOwnerName>
-          {commentId}. {commentOwnerName}
-        </CommentOwnerName>
-        <Date>{date}</Date>
+        <CommentOwnerName>{commentOwnerName}</CommentOwnerName>
+        <Date>{getFormattedDate(uploadedAt)}</Date>
       </UpperContainer>
       <Content>
         {isEditing ? (
