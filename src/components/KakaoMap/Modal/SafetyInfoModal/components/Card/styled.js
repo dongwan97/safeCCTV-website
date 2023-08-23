@@ -1,4 +1,4 @@
-import { CARD_COLOR_GRAY } from 'constants/color';
+import { CARD_COLOR_GRAY, CARD_COLOR_GREEN } from 'constants/color';
 import styled from 'styled-components';
 
 export const Root = styled.div`
@@ -15,7 +15,12 @@ export const Root = styled.div`
 export const TopStripe = styled.div`
   width: 100%;
   height: 25px;
-  background-color: ${CARD_COLOR_GRAY};
+  &.gray {
+    background-color: ${CARD_COLOR_GRAY};
+  }
+  &.green {
+    background-color: ${CARD_COLOR_GREEN};
+  }
 `;
 export const Title = styled.p`
   font-size: 17px;

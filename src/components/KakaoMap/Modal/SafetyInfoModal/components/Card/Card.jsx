@@ -1,11 +1,14 @@
 import { Count, Root, Title, TopStripe } from './styled';
 
-export const Card = ({ title, count }) => {
+export const Card = ({ title, count, mode, accumulate }) => {
   return (
     <Root>
-      <TopStripe />
+      <TopStripe className={accumulate ? 'green' : 'gray'} />
       <Title>{title}</Title>
-      <Count>{count}명</Count>
+      <Count>
+        {count}
+        {mode === 'car' ? '대' : '명'}
+      </Count>
     </Root>
   );
 };

@@ -202,23 +202,6 @@ export const SafetyInfoModal = ({ closeModal, title, region, isOpen }) => {
             <DetailContainerTitle>실시간 안전도</DetailContainerTitle>
             <Line options={options1} data={chart1Data} />
           </SafetyGraphWrapper>
-          {/* <RegionSafetyContainer>
-            <DetailContainerTitle>지역별 안전도 현황</DetailContainerTitle>
-            <RegionSafetyTable>
-              <TableRow>
-                <TableHeader>지역명</TableHeader>
-                <TableHeader>안전도</TableHeader>
-              </TableRow>
-              <TableRow>
-                <TableData>광진구</TableData>
-                <TableData className="red">red</TableData>
-              </TableRow>
-              <TableRow>
-                <TableData>종로</TableData>
-                <TableData className="blue">blue</TableData>
-              </TableRow>
-            </RegionSafetyTable>
-          </RegionSafetyContainer> */}
           <MaxSpeedContainer>
             <MaxSpeedTopTypo>현재까지의 최고속도는</MaxSpeedTopTypo>
             <MaxSpeedCenterTypo>
@@ -240,18 +223,14 @@ export const SafetyInfoModal = ({ closeModal, title, region, isOpen }) => {
             <CardContainer>
               <LeftCardContainer>
                 <Card title="현재 보행자 수" count={findRealTimeDataResponse?.peopleCount} />
-                <Card title="누적 보행자 수" count={nowTotalResponse?.peopleTotal} />
+                <Card title="누적 보행자 수" count={nowTotalResponse?.peopleTotal} accumulate={true} />
               </LeftCardContainer>
               <RightCardContainer>
-                <Card title="현재 챠량 대수" count={findRealTimeDataResponse?.carCount} />
-                <Card title="누적 챠량 대수" count={nowTotalResponse?.carTotal} />
+                <Card title="현재 챠량 대수" count={findRealTimeDataResponse?.carCount} mode="car" />
+                <Card title="누적 챠량 대수" count={nowTotalResponse?.carTotal} mode="car" accumulate={true} />
               </RightCardContainer>
             </CardContainer>
           </RealtimeContainer>
-
-          {/* <RealtimeWeatherContainer>
-            <DetailContainerTitle>실시간 기상 상태</DetailContainerTitle>
-          </RealtimeWeatherContainer> */}
         </ResponsiveContainer>
       </Root>
     </>
