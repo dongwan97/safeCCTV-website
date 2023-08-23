@@ -46,6 +46,7 @@ export const Root = styled.div`
 export const ResponsiveContainer = styled.div`
   margin-top: 30px;
   display: flex;
+
   gap: 30px;
   flex-wrap: wrap;
 `;
@@ -177,7 +178,7 @@ export const MaxSpeedBottomTypo = styled.p`
 
 export const RealtimeContainer = styled(DetailContainer)`
   padding: 25px 20px;
-  flex-grow: 1;
+  flex-basis: 830px;
 `;
 
 export const BottomContainer = styled(Container)``;
