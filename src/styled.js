@@ -7,6 +7,4 @@ export const Root = styled.div`
   position: relative;
   margin: 0 auto;
   padding-top: ${HEADER_HEIGHT}px;
-  max-width: ${BODY_MAX_WIDTH}px;
-  min-width: ${BODY_MIN_WIDTH}px;
 `;
