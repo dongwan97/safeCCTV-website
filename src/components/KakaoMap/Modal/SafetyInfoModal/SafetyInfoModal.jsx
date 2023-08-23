@@ -118,6 +118,17 @@ export const SafetyInfoModal = ({ closeModal, title, region, isOpen }) => {
   const [chart2Data, setChart2Data] = useState(defaultData);
 
   useEffect(() => {
+    if (!isOpen) {
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+    setIsRendered(true);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isRendered) return;
     findRealTimeData({ region: region }).then((res) => {
       console.log('findRealTimeDataResponse', res);
       setFindRealTimeDataResponse(res);
@@ -130,8 +141,7 @@ export const SafetyInfoModal = ({ closeModal, title, region, isOpen }) => {
       console.log('nowTotalResponse', res);
       setNowTotalResponse(res);
     });
-  }, []);
-
+  }, [isRendered]);
   useEffect(() => {
     if (!findAccumulateDataResponse) return;
     setLabels(findAccumulateDataResponse.map((data) => data.time.slice(0, 5)));
@@ -174,16 +184,7 @@ export const SafetyInfoModal = ({ closeModal, title, region, isOpen }) => {
       ],
     });
   }, [labels]);
-  useEffect(() => {
-    if (isOpen) {
-      setIsRendered(true);
-    } else {
-      const timer = setTimeout(() => {
-        setIsRendered(false);
-      }, 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
+
   if (!isRendered) return null;
   return (
     <>
