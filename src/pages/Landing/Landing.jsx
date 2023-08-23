@@ -90,11 +90,11 @@ export const Landing = () => {
                 <Link to="/main" className="Link">
                   <ServiceImgCar src={service2} variants={serviceImgAnimation} whileHover="hoverImg" />
                 </Link>
-                <ServiceTypoTop>안전도</ServiceTypoTop>
+                <ServiceTypoTop>차량 정보 확인</ServiceTypoTop>
                 <ServiceTypo>
-                  어린이 보호구역의 안전도를
+                  어린이 보호구역의 차량정보를
                   <br />
-                  한눈에 쉽게 확인 할 수 있어요.
+                  다양한 시각화를 통해서 보여드려요.
                 </ServiceTypo>
                 <Link to="/main" className="Link">
                   더 알아보기
@@ -107,11 +107,11 @@ export const Landing = () => {
                 <Link to="/main" className="Link">
                   <ServiceImg src={service3} variants={serviceImgAnimation} whileHover="hoverImg" />
                 </Link>
-                <ServiceTypoTop>안전도</ServiceTypoTop>
+                <ServiceTypoTop>어린이 구역 마커</ServiceTypoTop>
                 <ServiceTypo>
-                  어린이 보호구역의 안전도를
+                  지도에서 지정된 마커를 통해
                   <br />
-                  한눈에 쉽게 확인 할 수 있어요.
+                  어린이 보호구역의 위치를 확인하세요.
                 </ServiceTypo>
                 <Link to="/main" className="Link">
                   더 알아보기
@@ -121,11 +121,11 @@ export const Landing = () => {
                 <Link to="/main" className="Link">
                   <ServiceImg src={service4} variants={serviceImgAnimation} whileHover="hoverImg" />
                 </Link>
-                <ServiceTypoTop>안전도</ServiceTypoTop>
+                <ServiceTypoTop>보행자 수</ServiceTypoTop>
                 <ServiceTypo>
-                  어린이 보호구역의 안전도를
+                  보행자 수를 통해서
                   <br />
-                  한눈에 쉽게 확인 할 수 있어요.
+                  현재 혼잡도를 확인하세요.
                 </ServiceTypo>
                 <Link to="/main" className="Link">
                   더 알아보기

@@ -53,7 +53,7 @@ export const Main = () => {
       <KakaoMap />
       <ContactContainer>
         <ContactTitle>Contact Us</ContactTitle>
-        <ContactContent>문의사항이 있으시면 전화걸어 911 </ContactContent>
+        <ContactContent>문의사항이 있으다면 한테크와 직접 contact 하세요. </ContactContent>
       </ContactContainer>
     </Root>
   );
