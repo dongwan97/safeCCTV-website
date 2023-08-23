@@ -1,11 +1,10 @@
 import { MapInfoWindowContent, MapInfoWindowWrapper, MapMarkerWrapper, Root } from './styled';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Map, MapMarker, MapInfoWindow } from 'react-kakao-maps-sdk';
 import { SafetyInfoModal } from './Modal/SafetyInfoModal';
 
 export const KakaoMap = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const [lastMarker, setLastMarker] = useState(null);
   const [isSafetyInfoModalOpen, setIsSafetyInfoModalOpen] = useState(false);
 
   const closeSafetyInfoModal = () => {

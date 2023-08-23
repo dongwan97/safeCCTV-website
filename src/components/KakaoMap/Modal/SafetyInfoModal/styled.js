@@ -10,7 +10,7 @@ export const Root = styled.div`
   color: #ffffff;
   box-sizing: border-box;
   padding: 30px 80px;
-  width: 80vw;
+  width: 70vw;
   height: 90vh;
   overflow-y: scroll;
 `;
@@ -73,15 +73,13 @@ export const SafetyStats = styled.p`
 `;
 
 export const SafetyGraphWrapper = styled(DetailContainer)`
-  flex-basis: 700px;
+  flex-basis: 500px;
   box-sizing: border-box;
-  padding: 27px 24px;
+  padding: 15px 24px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 `;
 export const Graph = styled.div`
-  background-color: brown;
   width: 100%;
   height: 100%;
 `;
@@ -108,7 +106,7 @@ export const TableRow = styled.div`
   display: flex;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 9px 30px;
+  padding: 15px 30px;
   &:first-child {
     background: #2a2c32;
   }
@@ -124,10 +122,10 @@ export const TableData = styled.p`
 `;
 
 export const MaxSpeedContainer = styled(DetailContainer)`
-  flex-basis: content;
+  flex-basis: 300px;
   text-align: center;
-  padding: 50px 20px;
-  white-space: nowrap;
+  justify-content: center;
+  padding: 20px;
 `;
 
 export const MaxSpeedTopTypo = styled.p`
@@ -150,16 +148,26 @@ export const MaxSpeedBottomTypo = styled.p`
 `;
 
 export const RealtimeContainer = styled(DetailContainer)`
-  padding: 45px 20px;
+  padding: 25px 20px;
+  flex-grow: 1;
 `;
 
 export const BottomContainer = styled(Container)``;
 
 export const RealtimeVehicleContainer = styled(DetailContainer)`
-  padding: 27px 24px;
-  flex-grow: 1;
+  padding: 15px 24px;
+  flex-basis: 500px;
 `;
 
 export const RealtimeWeatherContainer = styled(DetailContainer)`
   padding: 27px 14px;
+`;
+
+export const LeftCardContainer = styled.div`
+  display: flex;
+  column-gap: 20px;
+`;
+export const RightCardContainer = styled.div`
+  display: flex;
+  column-gap: 20px;
 `;
