@@ -46,11 +46,12 @@ import { CardContainer } from 'components/KakaoMap/styled';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ChartTitle, Tooltip, Legend);
 
-export const SafetyInfoModal = ({ closeModal, title, region }) => {
+export const SafetyInfoModal = ({ closeModal, title, region, isOpen }) => {
   const [findRealTimeDataResponse, setFindRealTimeDataResponse] = useState();
   const [findAccumulateDataResponse, setFindAccumulateDataResponse] = useState();
   const [nowTotalResponse, setNowTotalResponse] = useState();
   const [labels, setLabels] = useState([]); //x축
+  const [isRendered, setIsRendered] = useState(isOpen);
   const onClickRoot = (e) => {
     e.stopPropagation();
   };
@@ -173,10 +174,21 @@ export const SafetyInfoModal = ({ closeModal, title, region }) => {
       ],
     });
   }, [labels]);
-
+  useEffect(() => {
+    if (isOpen) {
+      setIsRendered(true);
+    } else {
+      const timer = setTimeout(() => {
+        setIsRendered(false);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+  if (!isRendered) return null;
   return (
-    <ModalWrapper onClick={closeModal}>
-      <Root onClick={onClickRoot}>
+    <>
+      <ModalWrapper onClick={closeModal} isOpen={isOpen} />
+      <Root onClick={onClickRoot} isOpen={isOpen}>
         <Title>{title}</Title>
         <ResponsiveContainer>
           <SafetyContainer>
@@ -241,6 +253,6 @@ export const SafetyInfoModal = ({ closeModal, title, region }) => {
           </RealtimeWeatherContainer> */}
         </ResponsiveContainer>
       </Root>
-    </ModalWrapper>
+    </>
   );
 };

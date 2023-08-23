@@ -2,6 +2,7 @@ import { MapInfoWindowContent, MapInfoWindowWrapper, MapMarkerWrapper, Root } fr
 import React, { useState } from 'react';
 import { Map, MapMarker, MapInfoWindow } from 'react-kakao-maps-sdk';
 import { SafetyInfoModal } from './Modal/SafetyInfoModal';
+import { ModalWrapper } from './Modal/commonStyled';
 
 export const KakaoMap = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
@@ -43,19 +44,18 @@ export const KakaoMap = () => {
         {selectedMarker && (
           <MapInfoWindow position={{ lat: selectedMarker.lat + 0.0007, lng: selectedMarker.lng }}>
             <MapInfoWindowContent onClick={openSafetyInfoModal} onMouseOver={() => setSelectedMarker(selectedMarker)}>
-              {selectedMarker.content}
+              {selectedMarker?.content}
             </MapInfoWindowContent>
           </MapInfoWindow>
         )}
       </Map>
 
-      {isSafetyInfoModalOpen && (
-        <SafetyInfoModal
-          closeModal={closeSafetyInfoModal}
-          title={selectedMarker.content}
-          region={selectedMarker.region}
-        />
-      )}
+      <SafetyInfoModal
+        closeModal={closeSafetyInfoModal}
+        title={selectedMarker?.content}
+        region={selectedMarker?.region}
+        isOpen={isSafetyInfoModalOpen}
+      />
     </Root>
   );
 };
