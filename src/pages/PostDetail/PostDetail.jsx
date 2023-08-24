@@ -59,17 +59,11 @@ export const PostDetail = () => {
         inputRef.current.disabled = false;
         inputRef.current.focus();
       }, 0); //한국어 입력 오류 방지용 코드입니다.
+      checkComment({ postId: +postId }).then((res) => {
+        console.log('checkCommentResponse', res);
+        setCurrentCommentList(res);
+      });
 
-      setCurrentCommentList((prev) =>
-        [
-          {
-            commentId: currentCommentList[0]?.commentId + 1 ?? 0,
-            content: inputValue.comment,
-            nickname: '성훈',
-            uploadedAt: now.toISOString(),
-          },
-        ].concat(prev)
-      );
       setInputValue({ ...inputValue, comment: '' });
     });
   };
