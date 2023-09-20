@@ -4,6 +4,8 @@
 주식회사 '한테크' 와 함께한 어린이 보호구역 실시간 관제 플랫폼 웹페이지 개발 프로젝트입니다.
 약 두달간의 프로젝트로 이루어졌고 2명의 프론트와 2명의 백엔드로 구성되어 프로젝트를 진행하였습니다.
 
+![image](https://github.com/dongwan97/safeCCTV-website/assets/122766043/0579a946-7559-4601-9c36-8aea902c7b5d)
+
 ## 시연영상
 <a href="https://www.youtube.com/watch?v=PPnYcOLf-is">시연영상 바로가기</a>
 
